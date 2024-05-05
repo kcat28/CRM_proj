@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.crm_project;
-
+import javax.swing.*;
+import java.awt.*;
 import java.awt.CardLayout;
+import javax.swing.UIManager;
 
 /**
  *
@@ -37,99 +39,319 @@ public class dashboard extends javax.swing.JFrame {
         chat = new javax.swing.JButton();
         purchaseHstry = new javax.swing.JButton();
         feedbacks = new javax.swing.JButton();
+        products = new javax.swing.JButton();
         ibmLogo = new javax.swing.JLabel();
         menuDashboard = new javax.swing.JPanel();
         customerPanel = new javax.swing.JPanel();
+        customerScrollPane = new javax.swing.JScrollPane();
+        customerTable = new javax.swing.JTable();
+        bottomPanel = new javax.swing.JPanel();
+        topPanel = new javax.swing.JPanel();
         chatPanel = new javax.swing.JPanel();
         purchase_historyPanel = new javax.swing.JPanel();
-        feedback_panel = new javax.swing.JPanel();
+        feedbackPanel = new javax.swing.JPanel();
+        feedbackScrollPanel = new javax.swing.JScrollPane();
+        feedbackTable = new javax.swing.JTable();
+        feedback_1Panel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        num_VerySatisfied = new javax.swing.JLabel();
+        feedback_2Panel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        num_Satisfied = new javax.swing.JLabel();
+        feedback_3Panel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        num_Neutral = new javax.swing.JLabel();
+        feedback_4Panel = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        num_Disatissfied = new javax.swing.JLabel();
+        productsPanel = new javax.swing.JPanel();
+        productsScrollPane = new javax.swing.JScrollPane();
+        P_MainPanel = new javax.swing.JPanel();
+        product1 = new javax.swing.JPanel();
+        product1_img = new javax.swing.JLabel();
+        product2 = new javax.swing.JPanel();
+        product2_img = new javax.swing.JLabel();
+        product3 = new javax.swing.JPanel();
+        product3_img = new javax.swing.JLabel();
+        product4 = new javax.swing.JPanel();
+        product4_img = new javax.swing.JLabel();
+        product5 = new javax.swing.JPanel();
+        product5_img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jSplitPane1.setDividerLocation(100);
+        jSplitPane1.setDividerSize(6);
 
         menuTool.setBackground(new java.awt.Color(255, 255, 255));
         menuTool.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        customer.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         customer.setText("Customer");
         customer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 customerActionPerformed(evt);
             }
         });
-        menuTool.add(customer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 120, -1));
+        menuTool.add(customer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 130, -1));
 
+        chat.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         chat.setText("Chat");
         chat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chatActionPerformed(evt);
             }
         });
-        menuTool.add(chat, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 120, -1));
+        menuTool.add(chat, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 130, -1));
 
+        purchaseHstry.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         purchaseHstry.setText("Purchase History");
         purchaseHstry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 purchaseHstryActionPerformed(evt);
             }
         });
-        menuTool.add(purchaseHstry, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+        menuTool.add(purchaseHstry, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 130, -1));
 
+        feedbacks.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         feedbacks.setText("Feedbacks");
         feedbacks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 feedbacksActionPerformed(evt);
             }
         });
-        menuTool.add(feedbacks, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 120, -1));
+        menuTool.add(feedbacks, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 130, -1));
 
-        ibmLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jep\\Documents\\NetBeansProjects\\CRM_project\\src\\main\\resources\\imgs\\ibm_PNG19658.png")); // NOI18N
-        menuTool.add(ibmLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        products.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
+        products.setText("Products");
+        products.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productsActionPerformed(evt);
+            }
+        });
+        menuTool.add(products, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 130, -1));
+
+        ibmLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm_PNG19658.png"))); // NOI18N
+        menuTool.add(ibmLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jSplitPane1.setLeftComponent(menuTool);
 
         menuDashboard.setBackground(new java.awt.Color(255, 255, 255));
         menuDashboard.setLayout(new java.awt.CardLayout());
 
-        customerPanel.setBackground(new java.awt.Color(102, 102, 255));
-        menuDashboard.add(customerPanel, "card2");
+        customerPanel.setBackground(new java.awt.Color(33, 113, 193));
+        customerPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        customerTable.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
+        customerTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"21", "John Efren", "Viray", "Gannaban", "Google", "0921-431-814", "Jefjef1412@gmail.com", "Individual"},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "First Name", "Middle Name", "Last Name", "Company Name", "Contact No", "Email", "Customer Type"
+            }
+        ));
+        customerScrollPane.setViewportView(customerTable);
+
+        customerPanel.add(customerScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 1210, 420));
+        customerPanel.add(bottomPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 1210, 220));
+        customerPanel.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1210, 80));
+
+        menuDashboard.add(customerPanel, "customerCard");
 
         chatPanel.setBackground(new java.awt.Color(0, 204, 204));
-        menuDashboard.add(chatPanel, "card3");
+        menuDashboard.add(chatPanel, "chatCard");
 
         purchase_historyPanel.setBackground(new java.awt.Color(204, 204, 255));
-        menuDashboard.add(purchase_historyPanel, "card4");
+        menuDashboard.add(purchase_historyPanel, "purchaseCard");
 
-        feedback_panel.setBackground(new java.awt.Color(255, 153, 153));
-        menuDashboard.add(feedback_panel, "card5");
+        feedbackPanel.setBackground(new java.awt.Color(255, 153, 153));
+        feedbackPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        feedbackTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        feedbackScrollPanel.setViewportView(feedbackTable);
+
+        feedbackPanel.add(feedbackScrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 980, 470));
+
+        feedback_1Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 18)); // NOI18N
+        jLabel1.setText("Very Satisfied");
+        feedback_1Panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+
+        num_VerySatisfied.setFont(new java.awt.Font("IBM Plex Sans Light", 0, 24)); // NOI18N
+        num_VerySatisfied.setText("12");
+        feedback_1Panel.add(num_VerySatisfied, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+
+        feedbackPanel.add(feedback_1Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 220, 210));
+
+        feedback_2Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 18)); // NOI18N
+        jLabel3.setText("Satisfied");
+        feedback_2Panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        num_Satisfied.setFont(new java.awt.Font("IBM Plex Sans Light", 0, 24)); // NOI18N
+        num_Satisfied.setText("5");
+        feedback_2Panel.add(num_Satisfied, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 20, -1));
+
+        feedbackPanel.add(feedback_2Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 220, 210));
+
+        feedback_3Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 18)); // NOI18N
+        jLabel5.setText("Neutral");
+        feedback_3Panel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        num_Neutral.setFont(new java.awt.Font("IBM Plex Sans Light", 0, 24)); // NOI18N
+        num_Neutral.setText("8");
+        feedback_3Panel.add(num_Neutral, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+
+        feedbackPanel.add(feedback_3Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, 220, 210));
+
+        feedback_4Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 18)); // NOI18N
+        jLabel6.setText("Disatissfied");
+        feedback_4Panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        num_Disatissfied.setFont(new java.awt.Font("IBM Plex Sans Light", 0, 24)); // NOI18N
+        num_Disatissfied.setText("4");
+        feedback_4Panel.add(num_Disatissfied, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+
+        feedbackPanel.add(feedback_4Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 50, 220, 210));
+
+        menuDashboard.add(feedbackPanel, "feedbackCard");
+
+        productsPanel.setBackground(new java.awt.Color(204, 204, 255));
+        productsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        P_MainPanel.setBackground(new java.awt.Color(204, 204, 255));
+        P_MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        product1.setBackground(new java.awt.Color(255, 255, 255));
+        product1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        product1_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/pikachu test.png"))); // NOI18N
+        product1_img.setText("jLabel9");
+        product1.add(product1_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 250, -1));
+
+        P_MainPanel.add(product1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 250, 610));
+
+        product2.setBackground(new java.awt.Color(255, 255, 255));
+        product2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        product2_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/charmander .png"))); // NOI18N
+        product2_img.setText("jLabel10");
+        product2.add(product2_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 10, 270, 440));
+
+        P_MainPanel.add(product2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 250, 610));
+
+        product3.setBackground(new java.awt.Color(255, 255, 255));
+        product3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        product3_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/bulbasaur.png"))); // NOI18N
+        product3_img.setText("jLabel11");
+        product3.add(product3_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 110, -1, -1));
+
+        P_MainPanel.add(product3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 250, 610));
+
+        product4.setBackground(new java.awt.Color(255, 255, 255));
+        product4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        product4_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/squirtle.png"))); // NOI18N
+        product4_img.setText("jLabel12");
+        product4.add(product4_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 30, 340, 400));
+
+        P_MainPanel.add(product4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 250, 610));
+
+        product5.setBackground(new java.awt.Color(255, 255, 255));
+        product5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        product5_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/munchlax.png"))); // NOI18N
+        product5_img.setText("jLabel13");
+        product5.add(product5_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
+
+        P_MainPanel.add(product5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 10, 250, 610));
+
+        productsScrollPane.setViewportView(P_MainPanel);
+
+        productsPanel.add(productsScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1240, 720));
+
+        menuDashboard.add(productsPanel, "productsCard");
 
         jSplitPane1.setRightComponent(menuDashboard);
 
         getContentPane().add(jSplitPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 840));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void purchaseHstryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseHstryActionPerformed
-        // TODO add your handling code here:
-        cardLayout.show(menuDashboard, "purchase_historyPanel");
-    }//GEN-LAST:event_purchaseHstryActionPerformed
 
     private void feedbacksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbacksActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(menuDashboard, "feedback_panel");
+        cardLayout.show(menuDashboard, "feedbackCard");
     }//GEN-LAST:event_feedbacksActionPerformed
 
-    private void customerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerActionPerformed
+    private void purchaseHstryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseHstryActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(menuDashboard, "customerPanel");
-    }//GEN-LAST:event_customerActionPerformed
+        cardLayout.show(menuDashboard, "purchaseCard");
+    }//GEN-LAST:event_purchaseHstryActionPerformed
 
     private void chatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chatActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(menuDashboard, "chatPanel");
+        cardLayout.show(menuDashboard, "chatCard");
     }//GEN-LAST:event_chatActionPerformed
+
+    private void customerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(menuDashboard, "customerCard");
+    }//GEN-LAST:event_customerActionPerformed
+
+    private void productsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productsActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(menuDashboard, "productsCard");
+    }//GEN-LAST:event_productsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,21 +363,12 @@ public class dashboard extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
@@ -167,17 +380,49 @@ public class dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel P_MainPanel;
+    private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton chat;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JButton customer;
     private javax.swing.JPanel customerPanel;
-    private javax.swing.JPanel feedback_panel;
+    private javax.swing.JScrollPane customerScrollPane;
+    private javax.swing.JTable customerTable;
+    private javax.swing.JPanel feedbackPanel;
+    private javax.swing.JScrollPane feedbackScrollPanel;
+    private javax.swing.JTable feedbackTable;
+    private javax.swing.JPanel feedback_1Panel;
+    private javax.swing.JPanel feedback_2Panel;
+    private javax.swing.JPanel feedback_3Panel;
+    private javax.swing.JPanel feedback_4Panel;
     private javax.swing.JButton feedbacks;
     private javax.swing.JLabel ibmLogo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel menuDashboard;
     private javax.swing.JPanel menuTool;
+    private javax.swing.JLabel num_Disatissfied;
+    private javax.swing.JLabel num_Neutral;
+    private javax.swing.JLabel num_Satisfied;
+    private javax.swing.JLabel num_VerySatisfied;
+    private javax.swing.JPanel product1;
+    private javax.swing.JLabel product1_img;
+    private javax.swing.JPanel product2;
+    private javax.swing.JLabel product2_img;
+    private javax.swing.JPanel product3;
+    private javax.swing.JLabel product3_img;
+    private javax.swing.JPanel product4;
+    private javax.swing.JLabel product4_img;
+    private javax.swing.JPanel product5;
+    private javax.swing.JLabel product5_img;
+    private javax.swing.JButton products;
+    private javax.swing.JPanel productsPanel;
+    private javax.swing.JScrollPane productsScrollPane;
     private javax.swing.JButton purchaseHstry;
     private javax.swing.JPanel purchase_historyPanel;
+    private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
 }
