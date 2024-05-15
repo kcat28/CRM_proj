@@ -4,6 +4,7 @@
  */
 package com.mycompany.crm_project;
 
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -56,5 +57,14 @@ public class backend_customer {
             JOptionPane.showMessageDialog(null, "Failed to connect to database");
         }
         
+    }
+    
+    public void selectcustomerProfile(MouseEvent evt, String customerName, String phoneNumber, String email, String purchaseHistory, String feedback){
+        DefaultTableModel model = (DefaultTableModel) dashboard.getCustomerTable().getModel();
+        int row = dashboard.getCustomerTable().rowAtPoint(evt.getPoint());
+        int col = dashboard.getCustomerTable().columnAtPoint(evt.getPoint());
+        
+       
+    
     }
 }

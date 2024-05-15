@@ -41,15 +41,33 @@ public class dashboard extends javax.swing.JFrame {
         feedbacks = new javax.swing.JButton();
         products = new javax.swing.JButton();
         ibmLogo = new javax.swing.JLabel();
+        Logout = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         menuDashboard = new javax.swing.JPanel();
         customerPanel = new javax.swing.JPanel();
         customerScrollPane = new javax.swing.JScrollPane();
         customerTable = new javax.swing.JTable();
         bottomPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        customer_detail = new javax.swing.JLabel();
+        customer_name = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         load_customers = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        add_note = new javax.swing.JButton();
+        CLOSEBTN = new javax.swing.JLabel();
         chatPanel = new javax.swing.JPanel();
         purchase_historyPanel = new javax.swing.JPanel();
         feedbackPanel = new javax.swing.JPanel();
@@ -82,100 +100,239 @@ public class dashboard extends javax.swing.JFrame {
         product5_img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jSplitPane1.setDividerSize(6);
+        jSplitPane1.setDividerSize(3);
+        jSplitPane1.setMinimumSize(new java.awt.Dimension(1405, 823));
 
-        menuTool.setBackground(new java.awt.Color(255, 255, 255));
+        menuTool.setBackground(new java.awt.Color(10, 30, 69));
         menuTool.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        customer.setBackground(new java.awt.Color(10, 30, 69));
         customer.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
+        customer.setForeground(new java.awt.Color(255, 255, 255));
         customer.setText("Customer");
+        customer.setBorderPainted(false);
+        customer.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         customer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 customerActionPerformed(evt);
             }
         });
-        menuTool.add(customer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 130, -1));
+        menuTool.add(customer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 130, -1));
 
+        chat.setBackground(new java.awt.Color(10, 30, 69));
         chat.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
+        chat.setForeground(new java.awt.Color(255, 255, 255));
         chat.setText("Chat");
+        chat.setBorderPainted(false);
+        chat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chatActionPerformed(evt);
             }
         });
-        menuTool.add(chat, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 130, -1));
+        menuTool.add(chat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 130, -1));
 
+        purchaseHstry.setBackground(new java.awt.Color(10, 30, 69));
         purchaseHstry.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
-        purchaseHstry.setText("Purchase History");
+        purchaseHstry.setForeground(new java.awt.Color(255, 255, 255));
+        purchaseHstry.setText("Purchases");
+        purchaseHstry.setBorderPainted(false);
+        purchaseHstry.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         purchaseHstry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 purchaseHstryActionPerformed(evt);
             }
         });
-        menuTool.add(purchaseHstry, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 130, -1));
+        menuTool.add(purchaseHstry, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, -1));
 
+        feedbacks.setBackground(new java.awt.Color(10, 30, 69));
         feedbacks.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
+        feedbacks.setForeground(new java.awt.Color(255, 255, 255));
         feedbacks.setText("Feedbacks");
+        feedbacks.setBorderPainted(false);
+        feedbacks.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         feedbacks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 feedbacksActionPerformed(evt);
             }
         });
-        menuTool.add(feedbacks, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 130, -1));
+        menuTool.add(feedbacks, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, -1));
 
+        products.setBackground(new java.awt.Color(10, 30, 69));
         products.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
+        products.setForeground(new java.awt.Color(255, 255, 255));
         products.setText("Products");
+        products.setBorderPainted(false);
+        products.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        products.setOpaque(true);
         products.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 productsActionPerformed(evt);
             }
         });
-        menuTool.add(products, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 130, -1));
+        menuTool.add(products, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 130, -1));
 
         ibmLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm_PNG19658.png"))); // NOI18N
-        menuTool.add(ibmLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        menuTool.add(ibmLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        Logout.setBackground(new java.awt.Color(10, 30, 69));
+        Logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogoutMouseClicked(evt);
+            }
+        });
+        Logout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Logout");
+        Logout.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 60, 50));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/logout button.png"))); // NOI18N
+        Logout.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        menuTool.add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 770, 130, 70));
 
         jSplitPane1.setLeftComponent(menuTool);
 
         menuDashboard.setBackground(new java.awt.Color(255, 255, 255));
         menuDashboard.setLayout(new java.awt.CardLayout());
 
-        customerPanel.setBackground(new java.awt.Color(33, 113, 193));
+        customerPanel.setBackground(new java.awt.Color(48, 89, 127));
         customerPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        customerScrollPane.setOpaque(false);
+
+        customerTable.setBackground(new java.awt.Color(207, 217, 226));
         customerTable.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
         customerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"21", "John Efren", "Viray", "Gannaban", "Google", "0921-431-814", "Jefjef1412@gmail.com", "Individual"}
+
             },
             new String [] {
                 "ID", "First Name", "Middle Name", "Last Name", "Company Name", "Contact No", "Email", "Customer Type"
             }
         ));
+        customerTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customerTableMouseClicked(evt);
+            }
+        });
         customerScrollPane.setViewportView(customerTable);
 
-        customerPanel.add(customerScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 1210, 420));
-        customerPanel.add(bottomPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, 1210, 170));
+        customerPanel.add(customerScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 1210, 420));
 
+        bottomPanel.setBackground(new java.awt.Color(255, 255, 255));
+        bottomPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("IBM Plex Sans Light", 0, 12)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Customer Note\n");
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 390, 180));
+
+        bottomPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 500, 180));
+
+        customer_detail.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
+        customer_detail.setText("Customer Detail");
+        bottomPanel.add(customer_detail, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
+
+        customer_name.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
+        customer_name.setText("Customer Name");
+        bottomPanel.add(customer_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
+        jLabel2.setText("Contacts: ");
+        bottomPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
+        jLabel4.setText("Phone number");
+        bottomPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
+        jLabel7.setText("Email");
+        bottomPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, 20));
+
+        jLabel8.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
+        jLabel8.setText("Purchase History:");
+        bottomPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
+        jLabel9.setText("Feedback: ");
+        bottomPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
+        jLabel10.setText("data");
+        bottomPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
+        jLabel11.setText("data");
+        bottomPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
+
+        customerPanel.add(bottomPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 650, 1210, 170));
+
+        topPanel.setBackground(new java.awt.Color(48, 89, 127));
         topPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setBackground(new java.awt.Color(110, 127, 145));
+        jButton1.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("+Add New Customer");
-        topPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 140, 140, -1));
+        jButton1.setBorderPainted(false);
+        topPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 80, 140, -1));
 
+        jButton2.setBackground(new java.awt.Color(110, 127, 145));
+        jButton2.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Edit");
-        topPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 110, 140, -1));
+        jButton2.setBorderPainted(false);
+        topPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 80, 80, -1));
 
+        load_customers.setBackground(new java.awt.Color(110, 127, 145));
+        load_customers.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
+        load_customers.setForeground(new java.awt.Color(255, 255, 255));
         load_customers.setText("Load Customers");
+        load_customers.setBorderPainted(false);
         load_customers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 load_customersActionPerformed(evt);
             }
         });
-        topPanel.add(load_customers, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        topPanel.add(load_customers, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
 
-        customerPanel.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1210, 180));
+        jTextField1.setBackground(new java.awt.Color(114, 142, 168));
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setText("Search");
+        topPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1210, 40));
+
+        customerPanel.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 1210, 150));
+
+        add_note.setBackground(new java.awt.Color(110, 127, 145));
+        add_note.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
+        add_note.setForeground(new java.awt.Color(255, 255, 255));
+        add_note.setText("+Add Note");
+        add_note.setBorderPainted(false);
+        customerPanel.add(add_note, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 620, -1, -1));
+
+        CLOSEBTN.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 14)); // NOI18N
+        CLOSEBTN.setForeground(new java.awt.Color(255, 255, 255));
+        CLOSEBTN.setText("         X");
+        CLOSEBTN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CLOSEBTNMouseClicked(evt);
+            }
+        });
+        customerPanel.add(CLOSEBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 0, 60, 40));
 
         menuDashboard.add(customerPanel, "customerCard");
 
@@ -348,6 +505,22 @@ public class dashboard extends javax.swing.JFrame {
         backend.getTable();
     }//GEN-LAST:event_load_customersActionPerformed
 
+    private void CLOSEBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CLOSEBTNMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_CLOSEBTNMouseClicked
+
+    private void customerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerTableMouseClicked
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_customerTableMouseClicked
+
+    private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_LogoutMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -376,7 +549,10 @@ public class dashboard extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CLOSEBTN;
+    private javax.swing.JPanel Logout;
     private javax.swing.JPanel P_MainPanel;
+    private javax.swing.JButton add_note;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton chat;
     private javax.swing.JPanel chatPanel;
@@ -384,6 +560,8 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel customerPanel;
     private javax.swing.JScrollPane customerScrollPane;
     private javax.swing.JTable customerTable;
+    private javax.swing.JLabel customer_detail;
+    private javax.swing.JLabel customer_name;
     private javax.swing.JPanel feedbackPanel;
     private javax.swing.JScrollPane feedbackScrollPanel;
     private javax.swing.JTable feedbackTable;
@@ -396,10 +574,23 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton load_customers;
     private javax.swing.JPanel menuDashboard;
     private javax.swing.JPanel menuTool;
