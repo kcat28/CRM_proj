@@ -13,15 +13,15 @@ import javax.swing.UIManager;
  * @author Jep
  */
 public class dashboard extends javax.swing.JFrame {
-
-    /**
-     * Creates new form dashboard
-     */
-    CardLayout cardLayout;
+  
+    private backend_customer backend; 
+    private CardLayout cardLayout;
+    
     public dashboard() {
         initComponents();
-        
         cardLayout = (CardLayout)(menuDashboard).getLayout();
+        backend = new backend_customer(this);
+        backend.getTable();
     }
 
     /**
@@ -47,6 +47,9 @@ public class dashboard extends javax.swing.JFrame {
         customerTable = new javax.swing.JTable();
         bottomPanel = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        load_customers = new javax.swing.JButton();
         chatPanel = new javax.swing.JPanel();
         purchase_historyPanel = new javax.swing.JPanel();
         feedbackPanel = new javax.swing.JPanel();
@@ -145,37 +148,7 @@ public class dashboard extends javax.swing.JFrame {
         customerTable.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
         customerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"21", "John Efren", "Viray", "Gannaban", "Google", "0921-431-814", "Jefjef1412@gmail.com", "Individual"},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {"21", "John Efren", "Viray", "Gannaban", "Google", "0921-431-814", "Jefjef1412@gmail.com", "Individual"}
             },
             new String [] {
                 "ID", "First Name", "Middle Name", "Last Name", "Company Name", "Contact No", "Email", "Customer Type"
@@ -183,9 +156,26 @@ public class dashboard extends javax.swing.JFrame {
         ));
         customerScrollPane.setViewportView(customerTable);
 
-        customerPanel.add(customerScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 1210, 420));
-        customerPanel.add(bottomPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 1210, 220));
-        customerPanel.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1210, 80));
+        customerPanel.add(customerScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 1210, 420));
+        customerPanel.add(bottomPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, 1210, 170));
+
+        topPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("+Add New Customer");
+        topPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 140, 140, -1));
+
+        jButton2.setText("Edit");
+        topPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 110, 140, -1));
+
+        load_customers.setText("Load Customers");
+        load_customers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                load_customersActionPerformed(evt);
+            }
+        });
+        topPanel.add(load_customers, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+
+        customerPanel.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1210, 180));
 
         menuDashboard.add(customerPanel, "customerCard");
 
@@ -353,6 +343,11 @@ public class dashboard extends javax.swing.JFrame {
         cardLayout.show(menuDashboard, "productsCard");
     }//GEN-LAST:event_productsActionPerformed
 
+    private void load_customersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_customersActionPerformed
+        // TODO add your handling code here:
+        backend.getTable();
+    }//GEN-LAST:event_load_customersActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -379,6 +374,7 @@ public class dashboard extends javax.swing.JFrame {
         });
     }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel P_MainPanel;
     private javax.swing.JPanel bottomPanel;
@@ -397,11 +393,14 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel feedback_4Panel;
     private javax.swing.JButton feedbacks;
     private javax.swing.JLabel ibmLogo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JButton load_customers;
     private javax.swing.JPanel menuDashboard;
     private javax.swing.JPanel menuTool;
     private javax.swing.JLabel num_Disatissfied;
@@ -425,4 +424,18 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel purchase_historyPanel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
+
+    public JTable getCustomerTable() {
+        return customerTable;
+    }
+
+   
+
+    
+    
+    
+
+
+
 }
+
