@@ -204,7 +204,13 @@ public class dashboard extends javax.swing.JFrame {
         customerPanel.setBackground(new java.awt.Color(48, 89, 127));
         customerPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        customerScrollPane.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 14)); // NOI18N
         customerScrollPane.setOpaque(false);
+        customerScrollPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customerScrollPaneMouseClicked(evt);
+            }
+        });
 
         customerTable.setBackground(new java.awt.Color(207, 217, 226));
         customerTable.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
@@ -216,6 +222,11 @@ public class dashboard extends javax.swing.JFrame {
                 "ID", "First Name", "Middle Name", "Last Name", "Company Name", "Contact No", "Email", "Customer Type"
             }
         ));
+        customerTable.setGridColor(new java.awt.Color(153, 255, 153));
+        customerTable.setOpaque(false);
+        customerTable.setRowHeight(40);
+        customerTable.setSelectionBackground(new java.awt.Color(153, 153, 153));
+        customerTable.setShowGrid(false);
         customerTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 customerTableMouseClicked(evt);
@@ -512,8 +523,7 @@ public class dashboard extends javax.swing.JFrame {
 
     private void customerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerTableMouseClicked
         // TODO add your handling code here:
-        
-        
+           backend.selectcustomerProfile(evt);
     }//GEN-LAST:event_customerTableMouseClicked
 
     private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
@@ -521,6 +531,16 @@ public class dashboard extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_LogoutMouseClicked
 
+    private void customerScrollPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerScrollPaneMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_customerScrollPaneMouseClicked
+    public void updateCustomerDetails(String customerName, String customerLName, String phoneNumber, String email) {
+        customer_name.setText(customerName + " " + customerLName);
+        jLabel4.setText(phoneNumber);
+        this.jLabel7.setText(email);
+    }
+    
+   
     /**
      * @param args the command line arguments
      */
@@ -620,6 +640,19 @@ public class dashboard extends javax.swing.JFrame {
         return customerTable;
     }
 
+    public String getCustomer_name() {
+        return customer_name.toString();
+    }
+
+    public String getPhone_number() {
+        return jLabel4.toString();
+    }
+
+    public String getEmail() {
+        return jLabel7.toString();
+    }
+
+    
    
 
     

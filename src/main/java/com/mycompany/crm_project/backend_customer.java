@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class backend_customer {
     private dashboard dashboard;
+   
     
      public backend_customer(dashboard dashboard) {
         this.dashboard = dashboard;
@@ -59,12 +60,52 @@ public class backend_customer {
         
     }
     
-    public void selectcustomerProfile(MouseEvent evt, String customerName, String phoneNumber, String email, String purchaseHistory, String feedback){
+//    public void selectcustomerProfile(MouseEvent evt, String customerName, String phoneNumber, String email){
+//        DefaultTableModel model = (DefaultTableModel) dashboard.getCustomerTable().getModel();
+//        int row = dashboard.getCustomerTable().rowAtPoint(evt.getPoint());
+//        int col = dashboard.getCustomerTable().columnAtPoint(evt.getPoint());
+//        Object location = model.getValueAt(row, col);
+//        /*
+//        /backend logic steps
+//        1. locate the current row or customer clicked
+//        2. pull accurate data from db with the customer
+//        3. change displayed string to pulled data
+//        */
+//        
+//        if(location.equals(model.getValueAt(row, col))){
+//            try{
+//                customerName = model.getValueAt(row, col).toString();
+//                phoneNumber = model.getValueAt(row, col).toString();
+//                email = model.getValueAt(row, col).toString();
+//                //note = model.getValueAt(row, col).toString();
+//                
+//                dashboard.updateCustomerDetails(customerName, phoneNumber, email);
+//                
+//                
+//            } catch(Exception e){
+//                System.out.println("failed to fetch data");
+//            }
+//        }
+//       
+//    
+//    }
+
+    public void selectcustomerProfile(MouseEvent evt) {
         DefaultTableModel model = (DefaultTableModel) dashboard.getCustomerTable().getModel();
         int row = dashboard.getCustomerTable().rowAtPoint(evt.getPoint());
-        int col = dashboard.getCustomerTable().columnAtPoint(evt.getPoint());
-        
-       
-    
+
+        if (row >= 0) {
+            String customeFName = model.getValueAt(row, 1).toString(); // Assuming customer name is in column 0
+            String phoneNumber = model.getValueAt(row, 5).toString();  // Assuming phone number is in column 1
+            String email = model.getValueAt(row, 6).toString();        // Assuming email is in column 2
+            String customerLName = model.getValueAt(row, 3).toString();
+            try {
+                dashboard.updateCustomerDetails(customeFName, customerLName, phoneNumber, email);
+            } catch (Exception e) {
+                System.out.println("Failed to update customer details: " + e.getMessage());
+            }
+        }
     }
+
+
 }
