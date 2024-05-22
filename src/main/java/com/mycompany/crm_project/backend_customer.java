@@ -7,21 +7,37 @@ package com.mycompany.crm_project;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class backend_customer {
     private dashboard dashboard;
-   
+    
+    //stores database data extension
+            ArrayList<Integer> purchaseIDs = new ArrayList<>();
+            ArrayList<String> feedbackContents = new ArrayList<>();
+            ArrayList<Integer> customerIDs = new ArrayList<>();
     
      public backend_customer(dashboard dashboard) {
         this.dashboard = dashboard;
     }
     
-    public void getTable() {
+    public void getTableC() {
         String url = "jdbc:mysql://localhost:3306/ibmcrm?zeroDateTimeBehavior=CONVERT_TO_NULL";
         String username = "root";
         String pass = "";
@@ -47,8 +63,8 @@ public class backend_customer {
                     resultSet.getString("company_name"),
                     resultSet.getString("contact_number"),
                     resultSet.getString("contact_email"),
-                    resultSet.getString("customer_type")
-                   // resultSet.getString("customer_note"), // note when cliecked
+                    resultSet.getString("customer_type"),
+                    resultSet.getString("customer_note") // note when cliecked
                 };
                 model.addRow(rowData);  
             }       
@@ -60,52 +76,236 @@ public class backend_customer {
         
     }
     
-//    public void selectcustomerProfile(MouseEvent evt, String customerName, String phoneNumber, String email){
-//        DefaultTableModel model = (DefaultTableModel) dashboard.getCustomerTable().getModel();
-//        int row = dashboard.getCustomerTable().rowAtPoint(evt.getPoint());
-//        int col = dashboard.getCustomerTable().columnAtPoint(evt.getPoint());
-//        Object location = model.getValueAt(row, col);
-//        /*
-//        /backend logic steps
-//        1. locate the current row or customer clicked
-//        2. pull accurate data from db with the customer
-//        3. change displayed string to pulled data
-//        */
-//        
-//        if(location.equals(model.getValueAt(row, col))){
-//            try{
-//                customerName = model.getValueAt(row, col).toString();
-//                phoneNumber = model.getValueAt(row, col).toString();
-//                email = model.getValueAt(row, col).toString();
-//                //note = model.getValueAt(row, col).toString();
-//                
-//                dashboard.updateCustomerDetails(customerName, phoneNumber, email);
-//                
-//                
-//            } catch(Exception e){
-//                System.out.println("failed to fetch data");
-//            }
-//        }
-//       
-//    
-//    }
 
     public void selectcustomerProfile(MouseEvent evt) {
-        DefaultTableModel model = (DefaultTableModel) dashboard.getCustomerTable().getModel();
-        int row = dashboard.getCustomerTable().rowAtPoint(evt.getPoint());
-
-        if (row >= 0) {
-            String customeFName = model.getValueAt(row, 1).toString(); // Assuming customer name is in column 0
-            String phoneNumber = model.getValueAt(row, 5).toString();  // Assuming phone number is in column 1
-            String email = model.getValueAt(row, 6).toString();        // Assuming email is in column 2
-            String customerLName = model.getValueAt(row, 3).toString();
+        JTable customerTable = dashboard.getCustomerTable();
+        DefaultTableModel model = (DefaultTableModel) customerTable.getModel();
+        selectCustomerExtensionData();
+        int viewRowIndex = customerTable.rowAtPoint(evt.getPoint());
+        if (viewRowIndex >= 0) { // when a row is selected
+            
+            int modelIndex = customerTable.convertRowIndexToModel(viewRowIndex); // retrieves correct data from model even if sorted
+            
+            String IDF = model.getValueAt(modelIndex, 0).toString(); // get corresponding id in the table
+            int ID = Integer.parseInt(IDF); // parse the object - string into integer
+            String customeFName = model.getValueAt(modelIndex, 1).toString(); // ~
+            String customerLName = model.getValueAt(modelIndex, 3).toString();// ~
+            String phoneNumber = model.getValueAt(modelIndex, 5).toString();  // ~
+            String email; // declare var
+            String customerNote; // declare var
+            
+            List<Integer> matchingPurchaseIDs = new ArrayList<>(); // stores multiple purchase id if availaible
+            String cstmrFeedback = ""; // initalized; stores feedback from customer
+            
+            try{
+                 email = model.getValueAt(modelIndex, 6).toString(); // ~
+                 
+            } catch(Exception e){
+                 email = ""; 
+            }
+            
+            try{
+                customerNote = model.getValueAt(modelIndex, 8).toString(); // ~
+                
+            } catch (Exception e){
+                 customerNote = "";
+            }
+            
             try {
-                dashboard.updateCustomerDetails(customeFName, customerLName, phoneNumber, email);
+             boolean matchFound = false; // initalize boolean to check for purchase IDs available for the customer selected in the table
+
+             for (int i = 0; i < customerIDs.size(); i++) { //  iterate through arraylist containing database data (Customer IDs)
+                 int getCurrentID = customerIDs.get(i);
+
+                 if (getCurrentID == ID) {  // check for matching Customer IDs(database) and selected row (table - customer)
+                     matchingPurchaseIDs.add(purchaseIDs.get(i)); // stores multiple purchase id if availaible
+                     cstmrFeedback = feedbackContents.get(i); // stores feedback of customer id
+                     matchFound = true;
+                 }
+             }
+
+             if (matchFound) {
+                 // Display all matching purchase IDs and feedback contents
+                 for (int i = 0; i < matchingPurchaseIDs.size(); i++) {
+                     int purchaseID = matchingPurchaseIDs.get(i);
+//                     String feedback = matchingFeedbacks.get(i);
+                     System.out.println("Purchase ID: " + purchaseID + ", Feedback: " + cstmrFeedback); // for debugging purposes
+                 }
+             } else {
+                 System.out.println("no feedback"); 
+             }
+         } catch (Exception e) {
+             e.printStackTrace();
+             System.out.println("Error processing customer profile.");
+         }
+
+            
+            
+            try {
+                //passes data backend to GUI
+                dashboard.updateCustomerDetails(customeFName, customerLName, phoneNumber, email, customerNote, matchingPurchaseIDs, cstmrFeedback); 
             } catch (Exception e) {
                 System.out.println("Failed to update customer details: " + e.getMessage());
             }
         }
     }
+    
+        
+    public void searchFunction(JTextField searchbar) {
+        DefaultTableModel model = (DefaultTableModel) dashboard.getCustomerTable().getModel();
+        
+        searchbar.getDocument().addDocumentListener(new DocumentListener() { //Listens for changes in the searchbar e.g., typing, clear, input
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                filterTable();
+            }
 
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                filterTable();
+            }
 
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                // Not used in plain text components
+            }
+
+            private void filterTable() {
+                String searchTerm = searchbar.getText().toLowerCase();
+                TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
+                dashboard.getCustomerTable().setRowSorter(sorter);
+                if (searchTerm.isEmpty()) {
+                    sorter.setRowFilter(null); // Clear the filter when the search bar is empty
+                } else {
+                    sorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchTerm));
+                }
+            }
+          
+        });
+          JTable updatedTable = new JTable(model);
+          dashboard.updateSearchTable(updatedTable);
+    }
+    
+    
+    public TableModelListener NOTEChangeListener(){ // listens when note cell is changed e.g., updates note
+         return e->{
+             if(e.getType() == TableModelEvent.UPDATE){
+            DefaultTableModel model = (DefaultTableModel) dashboard.getCustomerTable().getModel();
+            int row = e.getFirstRow();
+            int col = e.getColumn();
+
+            if (col == 8) {    
+            String newNote = (String) model.getValueAt(row, col);
+            int ticketId = (int) model.getValueAt(row, 0); 
+            updateNoteTo(ticketId, newNote); // calls backend database update function specified below 
+         } else {
+             JOptionPane.showMessageDialog(null, "Note ERROR occurred");  
+            
+         }
+             }
+           
+         
+         };
+         
+    }
+    
+    private void updateNoteTo(int customerID, String note) {  // backend database for note
+        String url = "jdbc:mysql://localhost:3306/ibmcrm?zeroDateTimeBehavior=CONVERT_TO_NULL";
+        String username = "root";
+        String pass = "";
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(url, username, pass);
+
+            String query = "UPDATE customer SET customer_note = ? WHERE customer_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, note);
+            preparedStatement.setInt(2, customerID);
+            preparedStatement.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Note applied to database");
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to connect to database");
+        }
+    }
+    
+ // extension details backend = feedback and purchase IDs asssociated with the customer (gets called in selectCustomerProfile above
+   public void selectCustomerExtensionData() {
+    String url = "jdbc:mysql://localhost:3306/ibmcrm?zeroDateTimeBehavior=CONVERT_TO_NULL";
+    String username = "root";
+    String pass = "";
+
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(url, username, pass);
+
+        // Declare ArrayLists to store purchase IDs, feedback content, and customer IDs
+        purchaseIDs = new ArrayList<>();
+        feedbackContents = new ArrayList<>();
+        customerIDs = new ArrayList<>();
+
+        // Retrieve purchase IDs, customer IDs, and feedback content
+        String query = "SELECT p.purchase_id, p.customer_id, f.feedback_comment " +
+                       "FROM purchase p " +
+                       "LEFT JOIN feedback f ON p.customer_id = f.customer_id";
+        Statement statement = conn.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+
+        while (resultSet.next()) {
+            int purchaseID = resultSet.getInt("purchase_id");
+            int customerID = resultSet.getInt("customer_id");
+            String feedbackContent = resultSet.getString("feedback_comment");
+
+            purchaseIDs.add(purchaseID);
+            customerIDs.add(customerID);
+            feedbackContents.add(feedbackContent);
+        }
+
+        // Close resources
+        resultSet.close();
+        statement.close();
+        conn.close();
+    } catch (ClassNotFoundException | SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Failed to connect to database");
+    }
 }
+
+    
+    public void deleteCustomer(){
+        String url = "jdbc:mysql://localhost:3306/ibmcrm?zeroDateTimeBehavior=CONVERT_TO_NULL";
+        String username = "root";
+        String pass = "";
+        
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(url, username, pass);
+            
+            JTable customerTable = dashboard.getCustomerTable();
+            DefaultTableModel model = (DefaultTableModel) customerTable.getModel();
+            int selectedRowIndex = customerTable.getSelectedRow();
+            
+         if (selectedRowIndex != -1) { // If a row is selected
+            int selectedCustomerId = (int) model.getValueAt(selectedRowIndex, 0); // Assuming the first column is the customer ID
+            String query = "DELETE FROM customer WHERE customer_id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, selectedCustomerId);
+            pstmt.executeUpdate();
+            model.removeRow(selectedRowIndex); // Remove the row from the table
+            JOptionPane.showMessageDialog(null, "Customer deleted successfully");
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a customer to delete");
+        }
+        conn.close(); // Close connection after use
+        
+       
+        }catch(ClassNotFoundException | SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to delete to database");
+        }
+    }
+}
+
