@@ -229,7 +229,7 @@ public class dashboard extends javax.swing.JFrame {
         menuTool.add(products, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 130, -1));
 
         ibmLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm_PNG19658.png"))); // NOI18N
-        menuTool.add(ibmLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        menuTool.add(ibmLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 60));
 
         Logout.setBackground(new java.awt.Color(10, 30, 69));
         Logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -573,7 +573,7 @@ public class dashboard extends javax.swing.JFrame {
         earnings_cnt.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
         earnings_cnt.setForeground(new java.awt.Color(255, 255, 255));
         earnings_cnt.setText("0");
-        jPanel4.add(earnings_cnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 90, 40));
+        jPanel4.add(earnings_cnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 130, 40));
 
         jLabel23.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
@@ -748,9 +748,9 @@ public class dashboard extends javax.swing.JFrame {
         product3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         product3_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm storage scale.png"))); // NOI18N
-        product3.add(product3_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 8, 340, 380));
+        product3.add(product3_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 340, 370));
 
-        P_MainPanel.add(product3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 410, 410));
+        P_MainPanel.add(product3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 410, 400));
 
         product4.setBackground(new java.awt.Color(255, 255, 255));
         product4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -766,7 +766,7 @@ public class dashboard extends javax.swing.JFrame {
         product5_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm healthcare.png"))); // NOI18N
         product5.add(product5_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 390, 380));
 
-        P_MainPanel.add(product5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 410, 370));
+        P_MainPanel.add(product5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 410, 400));
 
         productsScrollPane.setViewportView(P_MainPanel);
 
