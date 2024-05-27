@@ -161,8 +161,10 @@ public class dashboard extends javax.swing.JFrame {
         customer.setBackground(new java.awt.Color(10, 30, 69));
         customer.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         customer.setForeground(new java.awt.Color(255, 255, 255));
-        customer.setText("Customer");
+        customer.setText("   Customer");
+        customer.setBorder(null);
         customer.setBorderPainted(false);
+        customer.setContentAreaFilled(false);
         customer.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         customer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,7 +176,8 @@ public class dashboard extends javax.swing.JFrame {
         chat.setBackground(new java.awt.Color(10, 30, 69));
         chat.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         chat.setForeground(new java.awt.Color(255, 255, 255));
-        chat.setText("Chat");
+        chat.setText("   Chat");
+        chat.setBorder(null);
         chat.setBorderPainted(false);
         chat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chat.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +190,8 @@ public class dashboard extends javax.swing.JFrame {
         purchaseHstry.setBackground(new java.awt.Color(10, 30, 69));
         purchaseHstry.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         purchaseHstry.setForeground(new java.awt.Color(255, 255, 255));
-        purchaseHstry.setText("Purchases");
+        purchaseHstry.setText("   Purchases");
+        purchaseHstry.setBorder(null);
         purchaseHstry.setBorderPainted(false);
         purchaseHstry.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         purchaseHstry.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -205,7 +209,8 @@ public class dashboard extends javax.swing.JFrame {
         feedbacks.setBackground(new java.awt.Color(10, 30, 69));
         feedbacks.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         feedbacks.setForeground(new java.awt.Color(255, 255, 255));
-        feedbacks.setText("Feedbacks");
+        feedbacks.setText("   Feedbacks");
+        feedbacks.setBorder(null);
         feedbacks.setBorderPainted(false);
         feedbacks.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         feedbacks.addActionListener(new java.awt.event.ActionListener() {
@@ -218,7 +223,8 @@ public class dashboard extends javax.swing.JFrame {
         products.setBackground(new java.awt.Color(10, 30, 69));
         products.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         products.setForeground(new java.awt.Color(255, 255, 255));
-        products.setText("Products");
+        products.setText("   Products");
+        products.setBorder(null);
         products.setBorderPainted(false);
         products.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         products.addActionListener(new java.awt.event.ActionListener() {
@@ -228,8 +234,8 @@ public class dashboard extends javax.swing.JFrame {
         });
         menuTool.add(products, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 130, -1));
 
-        ibmLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm_PNG19658.png"))); // NOI18N
-        menuTool.add(ibmLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 60));
+        ibmLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Group 28 (4).png"))); // NOI18N
+        menuTool.add(ibmLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 20, 180, 60));
 
         Logout.setBackground(new java.awt.Color(10, 30, 69));
         Logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -638,7 +644,7 @@ public class dashboard extends javax.swing.JFrame {
         feedback_1Panel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 60));
 
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/veryFB.png"))); // NOI18N
-        feedback_1Panel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 60, 210, 110));
+        feedback_1Panel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 210, 110));
 
         feedbackPanel.add(feedback_1Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 220, 210));
 
@@ -653,7 +659,7 @@ public class dashboard extends javax.swing.JFrame {
         feedback_2Panel.add(num_Satisfied, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 13, 20, -1));
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/satisfiedFB.png"))); // NOI18N
-        feedback_2Panel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 70, 210, 110));
+        feedback_2Panel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 210, 110));
 
         jLabel19.setBackground(new java.awt.Color(102, 153, 255));
         jLabel19.setOpaque(true);
@@ -676,14 +682,14 @@ public class dashboard extends javax.swing.JFrame {
         feedback_3Panel.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 60));
 
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/neutralFB.png"))); // NOI18N
-        feedback_3Panel.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 60, 210, 110));
+        feedback_3Panel.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 210, 110));
 
         feedbackPanel.add(feedback_3Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, 220, 210));
 
         feedback_4Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 18)); // NOI18N
-        jLabel6.setText("Disatissfied");
+        jLabel6.setText("Dissatisfied");
         feedback_4Panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 180, -1, -1));
 
         num_Disatissfied.setFont(new java.awt.Font("IBM Plex Sans Light", 1, 24)); // NOI18N
@@ -694,8 +700,8 @@ public class dashboard extends javax.swing.JFrame {
         jLabel10.setOpaque(true);
         feedback_4Panel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 60));
 
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/dissatisfiedFB.png"))); // NOI18N
-        feedback_4Panel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 210, 110));
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/disatisfiedFB.png"))); // NOI18N
+        feedback_4Panel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 210, 110));
 
         feedbackPanel.add(feedback_4Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 70, 220, 210));
 
@@ -731,15 +737,15 @@ public class dashboard extends javax.swing.JFrame {
         product1.setBackground(new java.awt.Color(255, 255, 255));
         product1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        product1_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm security.png"))); // NOI18N
-        product1.add(product1_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -60, 520, 520));
+        product1_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm security (1).png"))); // NOI18N
+        product1.add(product1_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, -55, 520, 520));
 
         P_MainPanel.add(product1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 410, 400));
 
         product2.setBackground(new java.awt.Color(255, 255, 255));
         product2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        product2_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm cloud.png"))); // NOI18N
+        product2_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm cloud (1).png"))); // NOI18N
         product2.add(product2_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 380, 390));
 
         P_MainPanel.add(product2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 410, 400));
@@ -747,24 +753,24 @@ public class dashboard extends javax.swing.JFrame {
         product3.setBackground(new java.awt.Color(255, 255, 255));
         product3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        product3_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm storage scale.png"))); // NOI18N
-        product3.add(product3_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 340, 370));
+        product3_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm storage scale (1).png"))); // NOI18N
+        product3.add(product3_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 340, 370));
 
         P_MainPanel.add(product3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 410, 400));
 
         product4.setBackground(new java.awt.Color(255, 255, 255));
         product4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        product4_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm storage.png"))); // NOI18N
-        product4.add(product4_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 400));
+        product4_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm storage (1).png"))); // NOI18N
+        product4.add(product4_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 370, 400));
 
         P_MainPanel.add(product4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, 370, -1));
 
         product5.setBackground(new java.awt.Color(255, 255, 255));
         product5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        product5_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm healthcare.png"))); // NOI18N
-        product5.add(product5_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 390, 380));
+        product5_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ibm healthcare (1).png"))); // NOI18N
+        product5.add(product5_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 390, 380));
 
         P_MainPanel.add(product5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 410, 400));
 

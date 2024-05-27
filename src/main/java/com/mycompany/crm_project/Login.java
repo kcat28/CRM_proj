@@ -50,9 +50,9 @@ public class Login extends javax.swing.JFrame {
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1405, 823));
+        setMinimumSize(new java.awt.Dimension(1270, 820));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1405, 823));
+        setPreferredSize(new java.awt.Dimension(1270, 820));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 14)); // NOI18N
@@ -63,26 +63,26 @@ public class Login extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1335, 40, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, 10, -1));
 
-        hideIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/hide (3).png"))); // NOI18N
+        hideIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/hide.png"))); // NOI18N
         hideIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hideIconMouseClicked(evt);
             }
         });
-        getContentPane().add(hideIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(1219, 488, -1, -1));
+        getContentPane().add(hideIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(1108, 485, -1, -1));
 
-        showIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/visible.png"))); // NOI18N
+        showIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/show.png"))); // NOI18N
         showIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 showIconMouseClicked(evt);
             }
         });
-        getContentPane().add(showIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 490, -1, -1));
+        getContentPane().add(showIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 490, -1, -1));
 
         email.setBackground(new java.awt.Color(49, 66, 104));
-        email.setFont(new java.awt.Font("IBM Plex Sans", 0, 30)); // NOI18N
+        email.setFont(new java.awt.Font("IBM Plex Sans", 0, 24)); // NOI18N
         email.setForeground(new java.awt.Color(255, 255, 255));
         email.setText("Email");
         email.setBorder(null);
@@ -99,7 +99,7 @@ public class Login extends javax.swing.JFrame {
                 emailActionPerformed(evt);
             }
         });
-        getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 390, 440, -1));
+        getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 400, 380, -1));
 
         password.setBackground(new java.awt.Color(47, 65, 106));
         password.setFont(new java.awt.Font("IBM Plex Sans", 0, 30)); // NOI18N
@@ -120,13 +120,13 @@ public class Login extends javax.swing.JFrame {
                 passwordActionPerformed(evt);
             }
         });
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 500, 340, -1));
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 500, 340, -1));
 
         customerConnect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/IBM_CONNECT (4).png"))); // NOI18N
-        getContentPane().add(customerConnect, new org.netbeans.lib.awtextra.AbsoluteConstraints(745, 70, 600, 220));
+        getContentPane().add(customerConnect, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, 560, 220));
 
         Login.setBackground(new java.awt.Color(2, 25, 47));
-        Login.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 36)); // NOI18N
+        Login.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 24)); // NOI18N
         Login.setForeground(new java.awt.Color(255, 255, 255));
         Login.setText("LOG IN");
         Login.setToolTipText("");
@@ -136,25 +136,25 @@ public class Login extends javax.swing.JFrame {
                 LoginActionPerformed(evt);
             }
         });
-        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 620, 200, 60));
+        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 630, 150, 50));
 
         lines1.setForeground(new java.awt.Color(255, 255, 255));
         lines1.setText("______________________________________________________________________");
         lines1.setToolTipText("");
-        getContentPane().add(lines1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 420, 540, 40));
+        getContentPane().add(lines1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, 540, 40));
 
         lines2.setForeground(new java.awt.Color(255, 255, 255));
         lines2.setText("______________________________________________________________________");
-        getContentPane().add(lines2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 540, 540, -1));
+        getContentPane().add(lines2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 530, 540, -1));
 
-        emailIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/email (4).png"))); // NOI18N
-        getContentPane().add(emailIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 370, -1, -1));
+        emailIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/email.png"))); // NOI18N
+        getContentPane().add(emailIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, -1, 150));
 
-        passIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/pass (2).png"))); // NOI18N
-        getContentPane().add(passIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 480, -1, -1));
+        passIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/pass.png"))); // NOI18N
+        getContentPane().add(passIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, -1, -1));
 
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Group 28 (1).png"))); // NOI18N
-        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1400, 820));
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/login background.png"))); // NOI18N
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 880));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
