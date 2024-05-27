@@ -81,6 +81,13 @@ public class dashboard extends javax.swing.JFrame {
         CLOSEBTN = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         chatPanel = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ChatList = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         purchase_historyPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         purchaseTable = new javax.swing.JTable();
@@ -428,6 +435,48 @@ public class dashboard extends javax.swing.JFrame {
         menuDashboard.add(customerPanel, "customerCard");
 
         chatPanel.setBackground(new java.awt.Color(48, 89, 127));
+        chatPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ChatList.setFont(new java.awt.Font("IBM Plex Sans", 0, 18)); // NOI18N
+        ChatList.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"James"},
+                {"Jonathan"},
+                {"Ryan"},
+                {"Chris"},
+                {"Lloyd"},
+                {""}
+            },
+            new String [] {
+                "Chats"
+            }
+        ));
+        ChatList.setRowHeight(50);
+        ChatList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ChatListMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(ChatList);
+
+        chatPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 320, 800));
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel6.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 750, 640, 30));
+
+        jButton1.setText("jButton1");
+        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 750, 90, 30));
+
+        jScrollPane4.setHorizontalScrollBar(null);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane4.setViewportView(jTextArea1);
+
+        jPanel6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 860, 710));
+
+        chatPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 900, 800));
+
         menuDashboard.add(chatPanel, "chatCard");
 
         purchase_historyPanel.setBackground(new java.awt.Color(48, 89, 127));
@@ -757,6 +806,10 @@ public class dashboard extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_deletebtnMouseClicked
+
+    private void ChatListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChatListMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ChatListMouseClicked
     public void updateCustomerDetails(String customerName, String customerLName, String phoneNumber, String email, String note,  java.util.List<Integer> PurchaseIDs, String cstmrFeedback) {
         customer_name.setText(customerName + " " + customerLName);
         jLabel4.setText(phoneNumber);
@@ -819,6 +872,7 @@ public class dashboard extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CLOSEBTN;
+    private javax.swing.JTable ChatList;
     private javax.swing.JLabel FeedbackJL;
     private javax.swing.JPanel Logout;
     private javax.swing.JPanel P_MainPanel;
@@ -844,6 +898,7 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel feedback_4Panel;
     private javax.swing.JButton feedbacks;
     private javax.swing.JLabel ibmLogo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -868,9 +923,14 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton load_customers;
     private javax.swing.JPanel menuDashboard;
     private javax.swing.JPanel menuTool;
