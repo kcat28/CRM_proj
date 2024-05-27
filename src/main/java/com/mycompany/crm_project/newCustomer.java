@@ -60,54 +60,54 @@ public class newCustomer extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(110, 127, 145));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 150, -1));
+        jPanel1.add(CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 150, -1));
 
         jLabel1.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Customer Type");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, 20));
 
         jLabel2.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText(" Middle Name");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 100, 20));
-        jPanel1.add(MN, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 150, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 100, 20));
+        jPanel1.add(MN, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 150, -1));
 
         jLabel3.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Last Name");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 90, 20));
-        jPanel1.add(LN, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 150, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 90, 20));
+        jPanel1.add(LN, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 150, -1));
 
         jLabel5.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Company Name");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 20));
-        jPanel1.add(CN, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 150, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, 20));
+        jPanel1.add(CN, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 150, -1));
 
         jLabel6.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText(" First Name");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 70, 20));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 70, 20));
 
         FN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FNActionPerformed(evt);
             }
         });
-        jPanel1.add(FN, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 150, -1));
+        jPanel1.add(FN, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 150, -1));
 
         jLabel7.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Contact No");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 20));
-        jPanel1.add(CONTACT, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 150, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, 20));
+        jPanel1.add(CONTACT, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 150, -1));
 
         jLabel8.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Email Address");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, 20));
-        jPanel1.add(EMAILADD, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 150, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, 20));
+        jPanel1.add(EMAILADD, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 150, -1));
 
         jButton1.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 12)); // NOI18N
         jButton1.setText("Create");
