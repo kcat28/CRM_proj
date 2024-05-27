@@ -78,7 +78,7 @@ public class backend_feedback {
                 case 3 -> count_satisfied++;
                 case 4 -> count_verysatisfied++;
                     
-                default -> JOptionPane.showMessageDialog(null, "out of format count rating: error");          
+                default -> JOptionPane.showMessageDialog(null, "out of format count rating: data error");          
             }
             
         }

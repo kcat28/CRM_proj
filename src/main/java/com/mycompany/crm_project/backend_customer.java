@@ -42,9 +42,14 @@ public class backend_customer {
         String username = "root";
         String pass = "";
         
+        Connection conn = null;
+        
         try{
            Class.forName("com.mysql.cj.jdbc.Driver");
-           Connection conn = DriverManager.getConnection(url, username, pass);
+           conn = DriverManager.getConnection(url, username, pass);
+           conn.setAutoCommit(false); //start transaction
+           conn.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+           
            
            String query = "SELECT * FROM customer";
            Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -68,13 +73,28 @@ public class backend_customer {
                 };
                 model.addRow(rowData);  
             }       
-           
-        } catch(ClassNotFoundException | SQLException e){
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Failed to connect to database");
+            conn.commit();
+        } catch (ClassNotFoundException | SQLException e) {
+                if (conn != null) { // if transaction exist
+                    try {
+                        conn.rollback(); // Roll back the transaction if any operation fails
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Failed to connect to database");
+            } finally {
+                if (conn != null) { // if transaction exist
+                    try {
+                        conn.setAutoCommit(true); // Restore auto-commit mode
+                        conn.close(); // Close the connection
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
         }
-        
     }
+}
     
 
     public void selectcustomerProfile(MouseEvent evt) {
@@ -214,21 +234,40 @@ public class backend_customer {
         String username = "root";
         String pass = "";
 
+        Connection conn = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(url, username, pass);
+            conn = DriverManager.getConnection(url, username, pass);
+            conn.setAutoCommit(false); // Start a transaction
 
             String query = "UPDATE customer SET customer_note = ? WHERE customer_id = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
             preparedStatement.setString(1, note);
             preparedStatement.setInt(2, customerID);
             preparedStatement.executeUpdate();
-            
+                       
+            conn.commit(); //commit transaction
             JOptionPane.showMessageDialog(null, "Note applied to database");
-
+            
         } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Failed to connect to database");
+             if (conn != null) {
+            try {
+                conn.rollback(); // Roll back the transaction if any operation fails
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Failed to connect to database");           
+        } finally {
+            if (conn != null) {
+            try {
+                conn.setAutoCommit(true); // Restore auto-commit mode
+                conn.close(); // Close the connection
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
         }
     }
     
@@ -279,10 +318,12 @@ public class backend_customer {
         String url = "jdbc:mysql://localhost:3306/ibmcrm?zeroDateTimeBehavior=CONVERT_TO_NULL";
         String username = "root";
         String pass = "";
+        Connection conn = null;
         
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(url, username, pass);
+            conn = DriverManager.getConnection(url, username, pass);
+            conn.setAutoCommit(false);
             
             JTable customerTable = dashboard.getCustomerTable();
             DefaultTableModel model = (DefaultTableModel) customerTable.getModel();
@@ -295,16 +336,31 @@ public class backend_customer {
             pstmt.setInt(1, selectedCustomerId);
             pstmt.executeUpdate();
             model.removeRow(selectedRowIndex); // Remove the row from the table
+            
+            conn.commit(); // commit transaction
             JOptionPane.showMessageDialog(null, "Customer deleted successfully");
         } else {
             JOptionPane.showMessageDialog(null, "Please select a customer to delete");
-        }
-        conn.close(); // Close connection after use
-        
-       
+        }   
         }catch(ClassNotFoundException | SQLException e){
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Failed to delete to database");
+            if (conn != null) {
+            try {
+                conn.rollback(); // Roll back the transaction if any operation fails
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Failed to delete customer from the database");
+        } finally {
+            if (conn != null) {
+            try {
+                conn.setAutoCommit(true); // Restore auto-commit mode
+                conn.close(); // Close the connection
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
         }
     }
 }
