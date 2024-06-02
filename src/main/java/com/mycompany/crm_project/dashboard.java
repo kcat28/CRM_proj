@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.crm_project;
+import com.mycompany.crm_project.chatBE.item_people;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.CardLayout;
@@ -82,13 +83,16 @@ public class dashboard extends javax.swing.JFrame {
         CLOSEBTN = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         chatPanel = new javax.swing.JPanel();
+        backgroundChat = new javax.swing.JPanel();
+        Left = new javax.swing.JPanel();
+        inboxbtn = new javax.swing.JButton();
+        messagebtn = new javax.swing.JButton();
+        groupbtn = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        ChatList = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
+        ContactListChatP = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
         purchase_historyPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         purchaseTable = new javax.swing.JTable();
@@ -462,45 +466,77 @@ public class dashboard extends javax.swing.JFrame {
         chatPanel.setBackground(new java.awt.Color(48, 89, 127));
         chatPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ChatList.setFont(new java.awt.Font("IBM Plex Sans", 0, 18)); // NOI18N
-        ChatList.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"James"},
-                {"Jonathan"},
-                {"Ryan"},
-                {"Chris"},
-                {"Lloyd"},
-                {""}
-            },
-            new String [] {
-                "Chats"
-            }
-        ));
-        ChatList.setRowHeight(50);
-        ChatList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ChatListMouseClicked(evt);
+        backgroundChat.setBackground(new java.awt.Color(255, 255, 255));
+        backgroundChat.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Left.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        inboxbtn.setBackground(new java.awt.Color(242, 242, 242));
+        inboxbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chatIcons/box.png"))); // NOI18N
+        inboxbtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        inboxbtn.setFocusable(false);
+        inboxbtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/chatIcons/box_selected.png"))); // NOI18N
+        inboxbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inboxbtnActionPerformed(evt);
             }
         });
-        jScrollPane3.setViewportView(ChatList);
+        Left.add(inboxbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 70, 40));
 
-        chatPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 320, 800));
+        messagebtn.setBackground(new java.awt.Color(242, 242, 242));
+        messagebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chatIcons/message.png"))); // NOI18N
+        messagebtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        messagebtn.setFocusable(false);
+        messagebtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/chatIcons/message_selected.png"))); // NOI18N
+        messagebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messagebtnActionPerformed(evt);
+            }
+        });
+        Left.add(messagebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, 40));
 
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel6.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 750, 640, 30));
+        groupbtn.setBackground(new java.awt.Color(242, 242, 242));
+        groupbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chatIcons/group.png"))); // NOI18N
+        groupbtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        groupbtn.setFocusable(false);
+        groupbtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/chatIcons/group_selected.png"))); // NOI18N
+        groupbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                groupbtnActionPerformed(evt);
+            }
+        });
+        Left.add(groupbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 60, 40));
 
-        jButton1.setText("jButton1");
-        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 750, 90, 30));
+        ContactListChatP.setFont(new java.awt.Font("IBM Plex Sans", 0, 18)); // NOI18N
+        ContactListChatP.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Jonathan Lugh"},
+                {"Chris Lim"},
+                {"Adam Father"},
+                {"Senku"}
+            },
+            new String [] {
+                "Contact List"
+            }
+        ));
+        ContactListChatP.setRowHeight(30);
+        ContactListChatP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ContactListChatPMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(ContactListChatP);
 
-        jScrollPane4.setHorizontalScrollBar(null);
+        Left.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 200, 200));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane4.setViewportView(jTextArea1);
+        jTextField1.setText("SearchAa");
+        Left.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 200, 40));
 
-        jPanel6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 860, 710));
+        backgroundChat.add(Left, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 810));
+        backgroundChat.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, -10, 250, 820));
+        backgroundChat.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 740, 810));
 
-        chatPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 900, 800));
+        chatPanel.add(backgroundChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1240, 820));
 
         menuDashboard.add(chatPanel, "chatCard");
 
@@ -894,9 +930,31 @@ public class dashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_deletebtnMouseClicked
 
-    private void ChatListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChatListMouseClicked
+    private void messagebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagebtnActionPerformed
+    inboxbtn.setSelected(false);
+    groupbtn.setSelected(false);
+    messagebtn.setSelected(true);
+    
+    }//GEN-LAST:event_messagebtnActionPerformed
+
+    private void groupbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupbtnActionPerformed
+    inboxbtn.setSelected(false);
+    groupbtn.setSelected(true);
+    messagebtn.setSelected(false);
+    
+    }//GEN-LAST:event_groupbtnActionPerformed
+
+    private void inboxbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inboxbtnActionPerformed
+    inboxbtn.setSelected(true);
+    groupbtn.setSelected(false);
+    messagebtn.setSelected(false);
+    
+    }//GEN-LAST:event_inboxbtnActionPerformed
+
+    private void ContactListChatPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContactListChatPMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_ChatListMouseClicked
+        
+    }//GEN-LAST:event_ContactListChatPMouseClicked
     public void updateCustomerDetails(String customerName, String customerLName, String phoneNumber, String email, String note,  java.util.List<Integer> PurchaseIDs, String cstmrFeedback) {
         customer_name.setText(customerName + " " + customerLName);
         jLabel4.setText(phoneNumber);
@@ -959,11 +1017,13 @@ public class dashboard extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CLOSEBTN;
-    private javax.swing.JTable ChatList;
+    private javax.swing.JTable ContactListChatP;
     private javax.swing.JLabel FeedbackJL;
+    private javax.swing.JPanel Left;
     private javax.swing.JPanel Logout;
     private javax.swing.JPanel P_MainPanel;
     private javax.swing.JButton addnewCustomer;
+    private javax.swing.JPanel backgroundChat;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton chat;
     private javax.swing.JPanel chatPanel;
@@ -984,8 +1044,9 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel feedback_3Panel;
     private javax.swing.JPanel feedback_4Panel;
     private javax.swing.JButton feedbacks;
+    private javax.swing.JButton groupbtn;
     private javax.swing.JLabel ibmLogo;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton inboxbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1024,16 +1085,16 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton load_customers;
     private javax.swing.JPanel menuDashboard;
     private javax.swing.JPanel menuTool;
+    private javax.swing.JButton messagebtn;
     private javax.swing.JTextArea noteTXTAREA;
     private javax.swing.JLabel num_Disatissfied;
     private javax.swing.JLabel num_Neutral;
