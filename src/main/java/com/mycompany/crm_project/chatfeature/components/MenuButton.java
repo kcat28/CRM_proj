@@ -2,12 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.crm_project.chatBE;
+package com.mycompany.crm_project.chatfeature.components;
+
+import javax.swing.JButton;
 
 /**
  *
- * @author Jep
+ * @author Acer
  */
-public class contactlist {
+public class MenuButton extends JButton{
     
+    public MenuButton(){
+        setContentAreaFilled(false);
+    }
 }
