@@ -34,6 +34,8 @@ public class dashboard extends javax.swing.JFrame {
         backendPurchase.getTableP();
         customerTable.getModel().addTableModelListener(backendCustomer.NOTEChangeListener());
         
+      
+        
     }
 
     /**
@@ -80,6 +82,49 @@ public class dashboard extends javax.swing.JFrame {
         searchbar = new javax.swing.JTextField();
         CLOSEBTN = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        feedbackPanel = new javax.swing.JPanel();
+        feedbackScrollPanel = new javax.swing.JScrollPane();
+        feedbackTable = new javax.swing.JTable();
+        feedback_1Panel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        num_VerySatisfied = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        feedback_2Panel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        num_Satisfied = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        feedback_3Panel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        num_Neutral = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        feedback_4Panel = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        num_Disatissfied = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        cstmrFeedback = new javax.swing.JTable();
+        jLabel35 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        rankingProductsContainer2 = new com.mycompany.crm_project.RankingProductsContainer();
+        jLabel36 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
         purchase_historyPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         purchaseTable = new javax.swing.JTable();
@@ -96,53 +141,6 @@ public class dashboard extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        feedbackPanel = new javax.swing.JPanel();
-        feedbackScrollPanel = new javax.swing.JScrollPane();
-        feedbackTable = new javax.swing.JTable();
-        feedback_1Panel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        num_VerySatisfied = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        feedback_2Panel = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        num_Satisfied = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        feedback_3Panel = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        num_Neutral = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        feedback_4Panel = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        num_Disatissfied = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel33 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel35 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        rankingProductsContainer2 = new com.mycompany.crm_project.RankingProductsContainer();
-        jLabel36 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
         productsPanel = new javax.swing.JPanel();
         productsScrollPane = new javax.swing.JScrollPane();
         P_MainPanel = new javax.swing.JPanel();
@@ -263,7 +261,7 @@ public class dashboard extends javax.swing.JFrame {
         customerPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         customerScrollPane.setBackground(new java.awt.Color(255, 255, 255));
-        customerScrollPane.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        customerScrollPane.setBorder(null);
         customerScrollPane.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 14)); // NOI18N
         customerScrollPane.setOpaque(false);
         customerScrollPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -318,7 +316,6 @@ public class dashboard extends javax.swing.JFrame {
         customerPanel.add(customerScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 1210, 450));
 
         bottomPanel.setBackground(new java.awt.Color(255, 255, 255));
-        bottomPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         bottomPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -328,10 +325,10 @@ public class dashboard extends javax.swing.JFrame {
         jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
 
         noteTXTAREA.setColumns(20);
-        noteTXTAREA.setFont(new java.awt.Font("IBM Plex Sans Light", 0, 12)); // NOI18N
+        noteTXTAREA.setFont(new java.awt.Font("IBM Plex Sans Light", 0, 13)); // NOI18N
         noteTXTAREA.setRows(5);
-        noteTXTAREA.setText(" Customer Note ");
-        noteTXTAREA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        noteTXTAREA.setText("  Customer Note ");
+        noteTXTAREA.setBorder(null);
         jScrollPane1.setViewportView(noteTXTAREA);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 170));
@@ -419,9 +416,10 @@ public class dashboard extends javax.swing.JFrame {
 
         searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/whiteSearchIcon (3).png"))); // NOI18N
         searchIcon.setText("jLabel10");
-        topPanel.add(searchIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 10, 70, -1));
+        topPanel.add(searchIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -10, 70, -1));
 
         searchbar.setBackground(new java.awt.Color(114, 142, 168));
+        searchbar.setFont(new java.awt.Font("IBM Plex Sans", 0, 14)); // NOI18N
         searchbar.setForeground(new java.awt.Color(255, 255, 255));
         searchbar.setText("           Search");
         searchbar.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -442,7 +440,7 @@ public class dashboard extends javax.swing.JFrame {
                 searchbarActionPerformed(evt);
             }
         });
-        topPanel.add(searchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1210, 40));
+        topPanel.add(searchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 40));
 
         customerPanel.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 1210, 150));
 
@@ -463,107 +461,15 @@ public class dashboard extends javax.swing.JFrame {
 
         menuDashboard.add(customerPanel, "customerCard");
 
-        purchase_historyPanel.setBackground(new java.awt.Color(48, 89, 127));
-        purchase_historyPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        purchase_historyPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jScrollPane2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-
-        purchaseTable.setBackground(new java.awt.Color(207, 217, 226));
-        purchaseTable.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
-        purchaseTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Purchase ID", "Customer ID", "Product ID", "Quantity", "Total", "Service Length", "Purchase Date and Time"
-            }
-        ));
-        purchaseTable.setOpaque(false);
-        purchaseTable.setRowHeight(40);
-        purchaseTable.setSelectionBackground(new java.awt.Color(102, 102, 102));
-        purchaseTable.setShowGrid(false);
-        jScrollPane2.setViewportView(purchaseTable);
-
-        purchase_historyPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 1180, 440));
-
-        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        orders_cnt.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
-        orders_cnt.setForeground(new java.awt.Color(255, 255, 255));
-        orders_cnt.setText("0");
-        jPanel2.add(orders_cnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 40, 40));
-
-        jLabel21.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("Orders");
-        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/box.png"))); // NOI18N
-        jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
-
-        purchase_historyPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 240, 240));
-
-        jPanel3.setBackground(new java.awt.Color(102, 153, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        customers_cnt.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
-        customers_cnt.setForeground(new java.awt.Color(255, 255, 255));
-        customers_cnt.setText("0");
-        jPanel3.add(customers_cnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 40, 40));
-
-        jLabel22.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("Customers");
-        jPanel3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/user-add.png"))); // NOI18N
-        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
-
-        purchase_historyPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 250, 240));
-
-        jPanel4.setBackground(new java.awt.Color(102, 153, 255));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        earnings_cnt.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
-        earnings_cnt.setForeground(new java.awt.Color(255, 255, 255));
-        earnings_cnt.setText("0");
-        jPanel4.add(earnings_cnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 130, 40));
-
-        jLabel23.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Earnings");
-        jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/coin.png"))); // NOI18N
-        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
-
-        purchase_historyPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 40, 240, 240));
-
-        jLabel17.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("     X");
-        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel17MouseClicked(evt);
-            }
-        });
-        purchase_historyPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 0, 50, 40));
-
-        menuDashboard.add(purchase_historyPanel, "purchaseCard");
-
         feedbackPanel.setBackground(new java.awt.Color(48, 89, 127));
         feedbackPanel.setForeground(new java.awt.Color(255, 255, 255));
         feedbackPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         feedbackScrollPanel.setBackground(new java.awt.Color(255, 255, 255));
-        feedbackScrollPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        feedbackScrollPanel.setBorder(null);
 
         feedbackTable.setBackground(new java.awt.Color(207, 217, 226));
+        feedbackTable.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
         feedbackTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -578,90 +484,80 @@ public class dashboard extends javax.swing.JFrame {
         feedbackTable.setGridColor(new java.awt.Color(204, 204, 204));
         feedbackTable.setOpaque(false);
         feedbackTable.setRowHeight(40);
+        feedbackTable.setSelectionBackground(new java.awt.Color(102, 102, 102));
+        feedbackTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
         feedbackTable.setShowGrid(false);
         feedbackScrollPanel.setViewportView(feedbackTable);
 
-        feedbackPanel.add(feedbackScrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 590, 470));
+        feedbackPanel.add(feedbackScrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 590, 580));
 
         feedback_1Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("IBM Plex Sans", 0, 18)); // NOI18N
         jLabel1.setText("Very Satisfied");
-        feedback_1Panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 170, 120, -1));
+        feedback_1Panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 120, -1));
 
         num_VerySatisfied.setFont(new java.awt.Font("IBM Plex Sans Light", 1, 24)); // NOI18N
         num_VerySatisfied.setForeground(new java.awt.Color(255, 255, 255));
         num_VerySatisfied.setText("0");
         feedback_1Panel.add(num_VerySatisfied, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
-        jLabel11.setBackground(new java.awt.Color(102, 153, 255));
+        jLabel11.setBackground(new java.awt.Color(110, 127, 145));
         jLabel11.setOpaque(true);
         feedback_1Panel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 60));
 
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/veryFB.png"))); // NOI18N
-        feedback_1Panel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 110, 110));
-
-        feedbackPanel.add(feedback_1Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, 210));
+        feedbackPanel.add(feedback_1Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, 110));
 
         feedback_2Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("IBM Plex Sans", 0, 18)); // NOI18N
         jLabel3.setText("Satisfied");
-        feedback_2Panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 170, 80, -1));
+        feedback_2Panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 80, -1));
 
         num_Satisfied.setFont(new java.awt.Font("IBM Plex Sans Light", 1, 24)); // NOI18N
         num_Satisfied.setForeground(new java.awt.Color(255, 255, 255));
         num_Satisfied.setText("0");
         feedback_2Panel.add(num_Satisfied, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 20, -1));
 
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/satisfiedFB.png"))); // NOI18N
-        feedback_2Panel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 110, 110));
-
-        jLabel19.setBackground(new java.awt.Color(102, 153, 255));
+        jLabel19.setBackground(new java.awt.Color(110, 127, 145));
         jLabel19.setOpaque(true);
         feedback_2Panel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 60));
 
-        feedbackPanel.add(feedback_2Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 140, 210));
+        feedbackPanel.add(feedback_2Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 140, 110));
 
         feedback_3Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("IBM Plex Sans", 0, 18)); // NOI18N
         jLabel5.setText("Neutral");
-        feedback_3Panel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+        feedback_3Panel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
         num_Neutral.setFont(new java.awt.Font("IBM Plex Sans Light", 1, 24)); // NOI18N
         num_Neutral.setForeground(new java.awt.Color(255, 255, 255));
         num_Neutral.setText("0");
         feedback_3Panel.add(num_Neutral, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
-        jLabel26.setBackground(new java.awt.Color(102, 153, 255));
+        jLabel26.setBackground(new java.awt.Color(110, 127, 145));
         jLabel26.setOpaque(true);
         feedback_3Panel.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 60));
 
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/neutralFB.png"))); // NOI18N
-        feedback_3Panel.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 110, 110));
-
-        feedbackPanel.add(feedback_3Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 140, 210));
+        feedbackPanel.add(feedback_3Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 140, 110));
 
         feedback_4Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("IBM Plex Sans", 0, 18)); // NOI18N
         jLabel6.setText("Dissatisfied");
-        feedback_4Panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 100, -1));
+        feedback_4Panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 110, -1));
 
         num_Disatissfied.setFont(new java.awt.Font("IBM Plex Sans Light", 1, 24)); // NOI18N
         num_Disatissfied.setForeground(new java.awt.Color(255, 255, 255));
         num_Disatissfied.setText("0");
         feedback_4Panel.add(num_Disatissfied, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
-        jLabel10.setBackground(new java.awt.Color(102, 153, 255));
+        jLabel10.setBackground(new java.awt.Color(110, 127, 145));
         jLabel10.setOpaque(true);
         feedback_4Panel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 60));
 
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/disatisfiedFB.png"))); // NOI18N
-        feedback_4Panel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 100, 110));
-
-        feedbackPanel.add(feedback_4Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 140, 210));
+        feedbackPanel.add(feedback_4Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 140, 110));
 
         jLabel14.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -687,7 +583,7 @@ public class dashboard extends javax.swing.JFrame {
         jLabel34.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 18)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Customer Feedbacks");
-        feedbackPanel.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        feedbackPanel.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         jPanel7.setBackground(new java.awt.Color(207, 217, 226));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -701,7 +597,7 @@ public class dashboard extends javax.swing.JFrame {
 
         jScrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        cstmrFeedback.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -720,7 +616,7 @@ public class dashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane5.setViewportView(jTable1);
+        jScrollPane5.setViewportView(cstmrFeedback);
 
         jPanel9.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 220));
 
@@ -789,6 +685,99 @@ public class dashboard extends javax.swing.JFrame {
         feedbackPanel.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 630, 750));
 
         menuDashboard.add(feedbackPanel, "feedbackCard");
+
+        purchase_historyPanel.setBackground(new java.awt.Color(48, 89, 127));
+        purchase_historyPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        purchase_historyPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+
+        purchaseTable.setBackground(new java.awt.Color(207, 217, 226));
+        purchaseTable.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
+        purchaseTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Purchase ID", "Customer ID", "Product ID", "Quantity", "Total", "Service Length", "Purchase Date and Time"
+            }
+        ));
+        purchaseTable.setOpaque(false);
+        purchaseTable.setRowHeight(40);
+        purchaseTable.setSelectionBackground(new java.awt.Color(102, 102, 102));
+        purchaseTable.setShowGrid(false);
+        jScrollPane2.setViewportView(purchaseTable);
+
+        purchase_historyPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 1180, 440));
+
+        jPanel2.setBackground(new java.awt.Color(110, 127, 145));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        orders_cnt.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
+        orders_cnt.setForeground(new java.awt.Color(255, 255, 255));
+        orders_cnt.setText("0");
+        jPanel2.add(orders_cnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 40, 40));
+
+        jLabel21.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Orders");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/box.png"))); // NOI18N
+        jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+
+        purchase_historyPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 240, 240));
+
+        jPanel3.setBackground(new java.awt.Color(110, 127, 145));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        customers_cnt.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
+        customers_cnt.setForeground(new java.awt.Color(255, 255, 255));
+        customers_cnt.setText("0");
+        jPanel3.add(customers_cnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 40, 40));
+
+        jLabel22.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Customers");
+        jPanel3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/user-add.png"))); // NOI18N
+        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
+
+        purchase_historyPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 250, 240));
+
+        jPanel4.setBackground(new java.awt.Color(110, 127, 145));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        earnings_cnt.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
+        earnings_cnt.setForeground(new java.awt.Color(255, 255, 255));
+        earnings_cnt.setText("0");
+        jPanel4.add(earnings_cnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 130, 40));
+
+        jLabel23.setFont(new java.awt.Font("IBM Plex Sans Medium", 0, 24)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("Earnings");
+        jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/coin.png"))); // NOI18N
+        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+
+        purchase_historyPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 240, 240));
+
+        jLabel17.setFont(new java.awt.Font("IBM Plex Sans SemiBold", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("     X");
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+        });
+        purchase_historyPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 0, 50, 40));
+
+        menuDashboard.add(purchase_historyPanel, "purchaseCard");
 
         productsPanel.setBackground(new java.awt.Color(48, 89, 127));
         productsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -987,6 +976,7 @@ public class dashboard extends javax.swing.JFrame {
     customerTable.setModel(updatedModel);
     
 }
+   
     
    
     /**
@@ -1023,6 +1013,7 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel P_MainPanel;
     private javax.swing.JButton addnewCustomer;
     private javax.swing.JPanel bottomPanel;
+    private javax.swing.JTable cstmrFeedback;
     private javax.swing.JButton customer;
     private javax.swing.JPanel customerPanel;
     private javax.swing.JScrollPane customerScrollPane;
@@ -1053,14 +1044,10 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -1100,7 +1087,6 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton load_customers;
     private javax.swing.JPanel menuDashboard;
     private javax.swing.JPanel menuTool;
@@ -1144,6 +1130,12 @@ public class dashboard extends javax.swing.JFrame {
     public JTable getPurchaseTable(){
         return purchaseTable;
     }
+
+    public JTable getCstmrFeedback() {
+        return cstmrFeedback;
+    }
+    
+    
     
    
 

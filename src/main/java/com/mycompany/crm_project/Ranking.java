@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import com.mycompany.crm_project.dashboard;
 
 /**
  *
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class Ranking extends javax.swing.JPanel {
     private String PNAME;
+    private backend_feedback BF;
  
     public Ranking(String Pname) {
         this.PNAME = Pname;
@@ -23,12 +25,22 @@ public class Ranking extends javax.swing.JPanel {
         init();
     }
     
+    public Ranking(dashboard dashboard){
+        this.BF = new backend_feedback(dashboard);
+         initComponents();
+          init();
+    }
+    
+
+    
     public void init(){
         
         addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
                 icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/productselected.png")));
+                JOptionPane.showMessageDialog(null, "Product Name: " + PNAME);
+               BF.getAllFeedback(PNAME);
             } 
         });
     }
@@ -45,6 +57,7 @@ public class Ranking extends javax.swing.JPanel {
 
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/productdefault.png"))); // NOI18N
 
+        ProductName.setFont(new java.awt.Font("IBM Plex Sans", 0, 12)); // NOI18N
         ProductName.setText("Product ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

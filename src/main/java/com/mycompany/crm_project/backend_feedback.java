@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,12 +19,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class backend_feedback {
     private dashboard dashboard;
-    
-    
+    ArrayList<String> feedbackcomment = new ArrayList<>();
+    ArrayList<Integer> productID = new ArrayList<>();
+
     public backend_feedback(dashboard dashboard){
     this.dashboard = dashboard;
 }
     
+
     
     public void getTableF(){
         String url = "jdbc:mysql://localhost:3306/ibmcrm?zeroDateTimeBehavior=CONVERT_TO_NULL";
@@ -45,8 +48,11 @@ public class backend_feedback {
                 Object[] rowData = {
                     resultSet.getInt("customer_id"), //ticket ID
                     resultSet.getInt("product_id"),
+                    //productID.add(resultSet.getInt("product_id")),
                     resultSet.getString("feedback_comment"),
+                    //feedbackcomment.add(resultSet.getString("feedback_comment")),
                     resultSet.getString("feedback_rating"),
+                    
                  
                 };
                 model.addRow(rowData);  
@@ -88,7 +94,32 @@ public class backend_feedback {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "error to get rating");
         }
-       
+        
     }
     
-}
+    
+    public void getAllFeedback (String PNAME) {
+        DefaultTableModel model = (DefaultTableModel) dashboard.getFeedbackTable().getModel();
+        DefaultTableModel model2 = (DefaultTableModel) dashboard.getCstmrFeedback().getModel();
+        model2.setRowCount(0);
+        
+        int numberofRow = model.getRowCount();
+         for(int x = 0; x< numberofRow; x++){ 
+             String currentPN = (String) "Product " + model.getValueAt(x, 1);
+             
+                if (currentPN.equalsIgnoreCase(PNAME)){
+                      Object rowData  = model.getValueAt(x, 2);
+               
+                 try{
+              model2.addRow(new Object[]{rowData});
+             } catch (Exception e){
+                  JOptionPane.showMessageDialog(null, "error to pass feedback on products");
+             }
+                }
+             }   
+         
+         }
+    
+  
+    }
+    

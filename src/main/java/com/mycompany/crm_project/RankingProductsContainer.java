@@ -5,6 +5,7 @@
 package com.mycompany.crm_project;
 
 import java.awt.FlowLayout;
+import java.util.HashSet;
 import javax.swing.BoxLayout;
 
 
@@ -17,6 +18,7 @@ public class RankingProductsContainer extends javax.swing.JPanel {
     /**
      * Creates new form RankingProductsContainer
      */
+    
     public RankingProductsContainer() {
         initComponents();
         init();
@@ -27,6 +29,7 @@ public class RankingProductsContainer extends javax.swing.JPanel {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
     
+    // add dynamic way to add product name not just iteration i
     public void rankingList(){
         for(int i = 1; i<=5; i++){
             this.add(new Ranking("Product " + i));
