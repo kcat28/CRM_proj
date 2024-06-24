@@ -11,17 +11,13 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 
-/**
- *
- * @author Jep
- */
 public class dashboard extends javax.swing.JFrame {
-  
+    
     private backend_customer backendCustomer; 
     private backend_feedback backendFeedback;
     private backend_purchase backendPurchase;
+    private RankingProductsContainer rankingProductsContainer;  
     private CardLayout cardLayout;
-    
     
     public dashboard() {
         initComponents();
@@ -34,8 +30,8 @@ public class dashboard extends javax.swing.JFrame {
         backendPurchase.getTableP();
         customerTable.getModel().addTableModelListener(backendCustomer.NOTEChangeListener());
         
-      
-        
+        rankingProductsContainer = new RankingProductsContainer(backendFeedback);
+        menuDashboard.add(rankingProductsContainer, "RankingProductsContainer");
     }
 
     /**
@@ -112,7 +108,7 @@ public class dashboard extends javax.swing.JFrame {
         cstmrFeedback = new javax.swing.JTable();
         jLabel35 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        rankingProductsContainer2 = new com.mycompany.crm_project.RankingProductsContainer();
+        rankingProductsContainer2 = rankingProductsContainer2 = new RankingProductsContainer(backendFeedback);
         jLabel36 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
@@ -626,6 +622,7 @@ public class dashboard extends javax.swing.JFrame {
         jLabel35.setText("Product Rating");
         jPanel7.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, 20));
 
+        rankingProductsContainer2 = new RankingProductsContainer(backendFeedback);
         rankingProductsContainer2.setBackground(new java.awt.Color(255, 255, 255));
         rankingProductsContainer2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane6.setViewportView(rankingProductsContainer2);
@@ -850,6 +847,7 @@ public class dashboard extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
 
     private void feedbacksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbacksActionPerformed
         // TODO add your handling code here:
@@ -1134,6 +1132,8 @@ public class dashboard extends javax.swing.JFrame {
     public JTable getCstmrFeedback() {
         return cstmrFeedback;
     }
+    
+    
     
     
     

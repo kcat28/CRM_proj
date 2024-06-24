@@ -1232,6 +1232,10 @@
                               </Border>
                             </Property>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="rankingProductsContainer2 = new RankingProductsContainer(backendFeedback);"/>
+                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="rankingProductsContainer2 = new RankingProductsContainer(backendFeedback);"/>
+                          </AuxValues>
                         </Component>
                       </SubComponents>
                     </Container>

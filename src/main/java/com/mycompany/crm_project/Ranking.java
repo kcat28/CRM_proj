@@ -10,41 +10,36 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import com.mycompany.crm_project.dashboard;
 
-/**
- *
- * @author Jep
- */
 public class Ranking extends javax.swing.JPanel {
     private String PNAME;
     private backend_feedback BF;
+    private dashboard DB;
  
-    public Ranking(String Pname) {
+    public Ranking(String Pname, backend_feedback backendFeedback) {
         this.PNAME = Pname;
+        this.BF = backendFeedback; 
         initComponents();
-        ProductName.setText(PNAME);
         init();
+        ProductName.setText(PNAME); 
     }
-    
-    public Ranking(dashboard dashboard){
-        this.BF = new backend_feedback(dashboard);
-         initComponents();
-          init();
-    }
-    
-
     
     public void init(){
+       // BF = new backend_feedback(DB);
         
         addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
                 icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/productselected.png")));
                 JOptionPane.showMessageDialog(null, "Product Name: " + PNAME);
-               BF.getAllFeedback(PNAME);
+                if (BF != null) {
+                    BF.getAllFeedback(PNAME); // Ensure BF is not null before calling method
+                } else {
+                    System.out.println("BF is null"); // Add this to check
+                }
             } 
         });
     }
-    
+   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -89,3 +84,4 @@ public class Ranking extends javax.swing.JPanel {
     private javax.swing.JLabel icon;
     // End of variables declaration//GEN-END:variables
 }
+

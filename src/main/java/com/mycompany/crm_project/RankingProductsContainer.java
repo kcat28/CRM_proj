@@ -8,35 +8,28 @@ import java.awt.FlowLayout;
 import java.util.HashSet;
 import javax.swing.BoxLayout;
 
-
-/**
- *
- * @author Jep
- */
 public class RankingProductsContainer extends javax.swing.JPanel {
-
-    /**
-     * Creates new form RankingProductsContainer
-     */
+    private backend_feedback backendFeedback;
     
-    public RankingProductsContainer() {
+    public RankingProductsContainer(backend_feedback backendFeedback) {
+        this.backendFeedback = backendFeedback;
         initComponents();
         init();
-    }
-
-    public void init(){
         rankingList();
+    }
+ 
+    public void init(){ 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
     
     // add dynamic way to add product name not just iteration i
     public void rankingList(){
         for(int i = 1; i<=5; i++){
-            this.add(new Ranking("Product " + i));
+            this.add(new Ranking("Product " + i, backendFeedback));
         }
         revalidate(); 
         repaint();  
-    }
+    }   
     
     /**
      * This method is called from within the constructor to initialize the form.
