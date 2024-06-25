@@ -12,7 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -94,7 +96,7 @@ public class backend_customer {
             String email; // declare var
             String customerNote; // declare var
             
-            List<Integer> matchingPurchaseIDs = new ArrayList<>(); // stores multiple purchase id if availaible
+            Set<Integer> matchingPurchaseIDs = new HashSet<>(); // stores multiple unique purchase id if availaible
             String cstmrFeedback = ""; // initalized; stores feedback from customer
             
             try{
@@ -126,11 +128,9 @@ public class backend_customer {
 
              if (matchFound) {
                  // Display all matching purchase IDs and feedback contents
-                 for (int i = 0; i < matchingPurchaseIDs.size(); i++) {
-                     int purchaseID = matchingPurchaseIDs.get(i);
-//                     String feedback = matchingFeedbacks.get(i);
-                     System.out.println("Purchase ID: " + purchaseID + ", Feedback: " + cstmrFeedback); // for debugging purposes
-                 }
+                 for (int purchaseID : matchingPurchaseIDs) {
+                    System.out.println("Purchase ID: " + purchaseID + ", Feedback: " + cstmrFeedback); // for debugging purposes
+                }
              } else {
                  System.out.println("no feedback"); 
              }
@@ -138,12 +138,11 @@ public class backend_customer {
              e.printStackTrace();
              System.out.println("Error processing customer profile.");
          }
-
-            
             
             try {
                 //passes data backend to GUI
-                dashboard.updateCustomerDetails(customeFName, customerLName, phoneNumber, email, customerNote, matchingPurchaseIDs, cstmrFeedback); 
+                List<Integer> uniquePurchaseIDList = new ArrayList<>(matchingPurchaseIDs);
+                 dashboard.updateCustomerDetails(customeFName, customerLName, phoneNumber, email, customerNote, uniquePurchaseIDList, cstmrFeedback);
             } catch (Exception e) {
                 System.out.println("Failed to update customer details: " + e.getMessage());
             }

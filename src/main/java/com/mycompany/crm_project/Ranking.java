@@ -45,6 +45,14 @@ public class Ranking extends javax.swing.JPanel {
         });
     }
     
+    public void rankingList(){
+        for(int i = 1; i<=5; i++){
+            this.add(new Ranking("Product " + i));
+        }
+        revalidate(); 
+        repaint();  
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

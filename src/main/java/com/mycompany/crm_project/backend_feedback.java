@@ -4,6 +4,9 @@
  */
 package com.mycompany.crm_project;
 
+import java.awt.Component;
+import java.awt.FontMetrics;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,7 +14,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -19,9 +25,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class backend_feedback {
     private dashboard dashboard;
-    ArrayList<String> feedbackcomment = new ArrayList<>();
-    ArrayList<Integer> productID = new ArrayList<>();
-
+    ArrayList<String> productFeedbacksArrayList = new ArrayList<>();
+    
+    
     public backend_feedback(dashboard dashboard){
     this.dashboard = dashboard;
 }
@@ -48,15 +54,46 @@ public class backend_feedback {
                 Object[] rowData = {
                     resultSet.getInt("customer_id"), //ticket ID
                     resultSet.getInt("product_id"),
-                    //productID.add(resultSet.getInt("product_id")),
                     resultSet.getString("feedback_comment"),
-                    //feedbackcomment.add(resultSet.getString("feedback_comment")),
                     resultSet.getString("feedback_rating"),
                     
                  
                 };
                 model.addRow(rowData);  
             }
+            
+        } catch(ClassNotFoundException | SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to connect to database");
+        }
+        
+        //ranking table
+       try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(url, username, pass);
+            
+            String query = "SELECT SUM(f.feedback_rating) AS total_rating, p.product_name\n" +
+                            "FROM products p\n" +
+                            "JOIN feedback f ON p.product_id = f.product_id\n" +
+                            "GROUP BY p.product_name";
+            Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet resultSet = statement.executeQuery(query);
+            
+            DefaultTableModel model = (DefaultTableModel) dashboard.getProductsRanking().getModel();
+            model.setRowCount(0);
+            
+            
+            int rank = 1;
+            while(resultSet.next()){
+            String productName = resultSet.getString("product_name");
+            int totalRating = resultSet.getInt("total_rating");
+            
+            
+                Object[] rowData = {rank, productName};
+                model.addRow(rowData);  
+                 rank++;
+            }
+        
             
         } catch(ClassNotFoundException | SQLException e){
             e.printStackTrace();
@@ -97,6 +134,62 @@ public class backend_feedback {
         
     }
     
+    public void getRatingSum(String ID){
+        
+    }
+    
+    public void selectProduct(MouseEvent evt){
+        JTable productTable = dashboard.getProductsRanking();
+        DefaultTableModel model = (DefaultTableModel) productTable.getModel();
+        int viewRowIndex = productTable.rowAtPoint(evt.getPoint());
+        int productID = 0;
+        if (viewRowIndex >= 0) { // when a row is selected
+            
+            String ID = model.getValueAt(viewRowIndex, 1).toString();
+            switch (ID) {
+                case "IBM Security MaaS360":
+                    productID = 1;
+                    break;
+                case "IBM Cloud Pak for Data":
+                    productID = 2;
+                    break;
+                case "IBM Storage Defender":
+                    productID = 3;
+                    break;
+                case "IBM Power Solution editions for healthcare":
+                    productID = 4;
+                    break;
+                case "Storage Scale System":
+                    productID = 5;
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "selectProduct error");
+            }
+            
+            
+            DefaultTableModel FBmodel = (DefaultTableModel) dashboard.getFeedbackTable().getModel();
+            int numberofRow = FBmodel.getRowCount();
+            
+
+             DefaultTableModel ProductREVIEWS = (DefaultTableModel) dashboard.getCstmrFeedback().getModel();
+             ProductREVIEWS.setRowCount(0);
+            
+            for(int i = 0; i<numberofRow; i++){
+               if(Integer.parseInt(FBmodel.getValueAt(i, 1).toString()) == productID){
+                   
+                   Object response = FBmodel.getValueAt(i, 2);
+                   Object[] rowData = {response};
+                   ProductREVIEWS.addRow(rowData);
+               }
+            }
+          
+           
+            
+            
+            
+    }
+}
+    
     
     public void getAllFeedback (String PNAME) {
         DefaultTableModel model = (DefaultTableModel) dashboard.getFeedbackTable().getModel();
@@ -119,6 +212,8 @@ public class backend_feedback {
              }   
          
          }
+    
+    
     
   
     }
