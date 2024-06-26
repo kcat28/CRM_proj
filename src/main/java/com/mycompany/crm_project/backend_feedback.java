@@ -180,16 +180,41 @@ public class backend_feedback {
                    Object response = FBmodel.getValueAt(i, 2);
                    Object[] rowData = {response};
                    ProductREVIEWS.addRow(rowData);
+
                }
             }
-          
-           
+
+        //product review 2
+            int count_disatisfied = 0;
+            int count_neutral = 0;
+            int count_satisfied = 0;
+            int count_verysatisfied = 0;
+            double count_overall = 0;
+               
+            for (int i = 0; i<numberofRow; i++) {
+            if(Integer.parseInt(FBmodel.getValueAt(i, 1).toString()) == productID){
+                
+                    int score = Integer.parseInt(FBmodel.getValueAt(i, 3).toString());
+                    
+                    switch (score) {
+                    case 1 -> count_disatisfied++;
+                    case 2 -> count_neutral++;
+                    case 3 -> count_satisfied++;
+                    case 4 -> count_verysatisfied++;
+                    default -> JOptionPane.showMessageDialog(null, "failed to get total rate scores");
+                    }
+                }
+            }
             
-            
-            
+           int total_count = count_disatisfied + count_neutral + count_satisfied + count_verysatisfied;
+                if (total_count > 0) {
+                    count_overall = ((count_disatisfied * 1) + (count_neutral * 2) + (count_satisfied * 3) + (count_verysatisfied * 4)) / (double) total_count;
+                } else {
+                    count_overall = 0; // or some other default value
+                }
+            dashboard.updateFeedbackRatings(count_disatisfied, count_neutral, count_satisfied, count_verysatisfied, count_overall);
     }
 }
-    
     
     public void getAllFeedback (String PNAME) {
         DefaultTableModel model = (DefaultTableModel) dashboard.getFeedbackTable().getModel();

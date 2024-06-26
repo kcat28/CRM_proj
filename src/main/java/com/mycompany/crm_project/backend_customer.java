@@ -274,37 +274,67 @@ public class backend_customer {
 }
 
     
-    public void deleteCustomer(){
-        String url = "jdbc:mysql://localhost:3306/ibmcrm?zeroDateTimeBehavior=CONVERT_TO_NULL";
-        String username = "root";
-        String pass = "";
-        
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(url, username, pass);
-            
-            JTable customerTable = dashboard.getCustomerTable();
-            DefaultTableModel model = (DefaultTableModel) customerTable.getModel();
-            int selectedRowIndex = customerTable.getSelectedRow();
-            
-         if (selectedRowIndex != -1) { // If a row is selected
-            int selectedCustomerId = (int) model.getValueAt(selectedRowIndex, 0); // Assuming the first column is the customer ID
-            String query = "DELETE FROM customer WHERE customer_id = ?";
-            PreparedStatement pstmt = conn.prepareStatement(query);
-            pstmt.setInt(1, selectedCustomerId);
-            pstmt.executeUpdate();
-            model.removeRow(selectedRowIndex); // Remove the row from the table
-            JOptionPane.showMessageDialog(null, "Customer deleted successfully");
+  public void deleteCustomer() {
+    String url = "jdbc:mysql://localhost:3306/ibmcrm?zeroDateTimeBehavior=CONVERT_TO_NULL";
+    String username = "root";
+    String pass = "";
+    
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection(url, username, pass);
+
+        JTable customerTable = dashboard.getCustomerTable();
+        DefaultTableModel model = (DefaultTableModel) customerTable.getModel();
+        int[] selectedRowIndices = customerTable.getSelectedRows();
+
+        if (selectedRowIndices.length > 0) { // If at least one row is selected
+            conn.setAutoCommit(false); // Start transaction
+
+            pstmt = conn.prepareStatement("DELETE FROM customer WHERE customer_id = ?");
+
+            for (int i = selectedRowIndices.length - 1; i >= 0; i--) {
+                int selectedRowIndex = selectedRowIndices[i];
+                int selectedCustomerId = (int) model.getValueAt(selectedRowIndex, 0); // Assuming the first column is the customer ID
+                System.out.println("Deleting customer ID: " + selectedCustomerId); // Debug message
+                pstmt.setInt(1, selectedCustomerId);
+                pstmt.executeUpdate();
+                model.removeRow(selectedRowIndex); // Remove the row from the table model
+            }
+
+            conn.commit(); // Commit transaction
+            JOptionPane.showMessageDialog(null, "Customers deleted successfully");
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a customer to delete");
+            JOptionPane.showMessageDialog(null, "Please select at least one customer to delete");
         }
-        conn.close(); // Close connection after use
-        
-       
-        }catch(ClassNotFoundException | SQLException e){
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Failed to delete to database");
+
+    } catch (ClassNotFoundException | SQLException e) {
+        e.printStackTrace();
+        try {
+            if (conn != null) {
+                conn.rollback(); // Rollback transaction on error
+                System.out.println("Transaction rolled back"); // Debug message
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(null, "Failed to delete customers from database");
+    } finally {
+        try {
+            if (pstmt != null) {
+                pstmt.close();
+            }
+            if (conn != null) {
+                conn.setAutoCommit(true); // Reset to default
+                conn.close(); // Close connection
+                System.out.println("Connection closed"); // Debug message
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
+}
 }
 
