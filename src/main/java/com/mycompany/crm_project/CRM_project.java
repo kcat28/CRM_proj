@@ -10,7 +10,5 @@ package com.mycompany.crm_project;
  */
 public class CRM_project {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
+  
 }

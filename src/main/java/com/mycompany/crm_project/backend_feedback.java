@@ -13,6 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -68,36 +71,71 @@ public class backend_feedback {
         }
         
         //ranking table
-       try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(url, username, pass);
-            
-            String query = "SELECT SUM(f.feedback_rating) AS total_rating, p.product_name\n" +
-                            "FROM products p\n" +
-                            "JOIN feedback f ON p.product_id = f.product_id\n" +
-                            "GROUP BY p.product_name";
-            Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet resultSet = statement.executeQuery(query);
-            
-            DefaultTableModel model = (DefaultTableModel) dashboard.getProductsRanking().getModel();
-            model.setRowCount(0);
-            
-            
-            int rank = 1;
-            while(resultSet.next()){
+       try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(url, username, pass);
+
+        String query = "SELECT p.product_name, " +
+                       "SUM(CASE WHEN f.feedback_rating = 1 THEN 1 ELSE 0 END) AS count_disatisfied, " +
+                       "SUM(CASE WHEN f.feedback_rating = 2 THEN 1 ELSE 0 END) AS count_neutral, " +
+                       "SUM(CASE WHEN f.feedback_rating = 3 THEN 1 ELSE 0 END) AS count_satisfied, " +
+                       "SUM(CASE WHEN f.feedback_rating = 4 THEN 1 ELSE 0 END) AS count_verysatisfied, " +
+                       "COUNT(f.feedback_rating) AS total_count " +
+                       "FROM products p " +
+                       "JOIN feedback f ON p.product_id = f.product_id " +
+                       "GROUP BY p.product_name";
+
+        Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet resultSet = statement.executeQuery(query);
+
+        DefaultTableModel model = (DefaultTableModel) dashboard.getProductsRanking().getModel();
+        model.setRowCount(0);
+
+        List<ProductRanking> rankings = new ArrayList<>();
+
+        while (resultSet.next()) {
             String productName = resultSet.getString("product_name");
-            int totalRating = resultSet.getInt("total_rating");
-            
-            
-                Object[] rowData = {rank, productName};
-                model.addRow(rowData);  
-                 rank++;
-            }
-        
-            
-        } catch(ClassNotFoundException | SQLException e){
+            int countDisatisfied = resultSet.getInt("count_disatisfied");
+            int countNeutral = resultSet.getInt("count_neutral");
+            int countSatisfied = resultSet.getInt("count_satisfied");
+            int countVerySatisfied = resultSet.getInt("count_verysatisfied");
+            int totalCount = resultSet.getInt("total_count");
+
+            double countOverall = ((countDisatisfied * 1) + (countNeutral * 2) + (countSatisfied * 3) + (countVerySatisfied * 4)) / (double) totalCount;
+
+            rankings.add(new ProductRanking(productName, countOverall));
+        }
+
+        // Sort the products by countOverall in descending order
+        rankings.sort(Comparator.comparingDouble(ProductRanking::getCountOverall).reversed());
+
+        int rank = 1;
+        for (ProductRanking ranking : rankings) {
+            Object[] rowData = {rank, ranking.getProductName(), ranking.getCountOverall()};
+            model.addRow(rowData);
+            rank++;
+        }
+
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Failed to connect to database");
+        }
+    }
+    class ProductRanking {
+        private String productName;
+        private double countOverall;
+
+        public ProductRanking(String productName, double countOverall) {
+            this.productName = productName;
+            this.countOverall = countOverall;
+        }
+
+        public String getProductName() {
+            return productName;
+        }
+
+        public double getCountOverall() {
+            return countOverall;
         }
     }
     
@@ -133,11 +171,7 @@ public class backend_feedback {
         }
         
     }
-    
-    public void getRatingSum(String ID){
-        
-    }
-    
+      
     public void selectProduct(MouseEvent evt){
         JTable productTable = dashboard.getProductsRanking();
         DefaultTableModel model = (DefaultTableModel) productTable.getModel();
@@ -212,34 +246,12 @@ public class backend_feedback {
                 } else {
                     count_overall = 0; // or some other default value
                 }
-            dashboard.updateFeedbackRatings(count_disatisfied, count_neutral, count_satisfied, count_verysatisfied, count_overall);
+            dashboard.updateFeedbackRatings(count_disatisfied, count_neutral, count_satisfied, count_verysatisfied, count_overall, productID);
+            
+        }
+        
+        
+        
     }
 }
-    
-    public void getAllFeedback (String PNAME) {
-        DefaultTableModel model = (DefaultTableModel) dashboard.getFeedbackTable().getModel();
-        DefaultTableModel model2 = (DefaultTableModel) dashboard.getCstmrFeedback().getModel();
-        model2.setRowCount(0);
-        
-        int numberofRow = model.getRowCount();
-         for(int x = 0; x< numberofRow; x++){ 
-             String currentPN = (String) "Product " + model.getValueAt(x, 1);
-             
-                if (currentPN.equalsIgnoreCase(PNAME)){
-                      Object rowData  = model.getValueAt(x, 2);
-               
-                 try{
-              model2.addRow(new Object[]{rowData});
-             } catch (Exception e){
-                  JOptionPane.showMessageDialog(null, "error to pass feedback on products");
-             }
-                }
-             }   
-         
-         }
-    
-    
-    
-  
-    }
     

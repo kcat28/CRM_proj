@@ -18,10 +18,10 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Acer
  */
-public class backend_purchase {
+public class backend_sales {
     private dashboard dashboard;
     
-    public backend_purchase(dashboard dashboard){
+    public backend_sales(dashboard dashboard){
         this.dashboard = dashboard;
     }
     
@@ -38,7 +38,7 @@ public class backend_purchase {
             Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet resultSet = statement.executeQuery(query);
             
-            DefaultTableModel model = (DefaultTableModel) dashboard.getPurchaseTable().getModel();
+            DefaultTableModel model = (DefaultTableModel) dashboard.getSalesTable().getModel();
             model.setRowCount(0);
             
             while(resultSet.next()){
@@ -64,8 +64,8 @@ public class backend_purchase {
     
     
     //check every row for purchase quantity = orders, customers = unique id, earnings = purchase total
-   public void getPurchaseDetails(){
-    DefaultTableModel model = (DefaultTableModel) dashboard.getPurchaseTable().getModel();
+   public void getSalesDetails(){
+    DefaultTableModel model = (DefaultTableModel) dashboard.getSalesTable().getModel();
     
     int count_orders = model.getRowCount(); // total orders
     double totalEarnings = 0.0;  // total earnings
@@ -82,14 +82,47 @@ public class backend_purchase {
            
             System.err.println("Error parsing data in row " + (x + 1));
             e.printStackTrace();
-        }
+        } 
     }
     
     int count_customers = uniqueCustomers.size();// total customers (Unique)
    
+    //new function tally by prod
+    int prod1 = 0;
+    int prod2 = 0;
+    int prod3 = 0;
+    int prod4 = 0;
+    int prod5 = 0;
+    
+    for(int x = 0; x<count_orders;x++){
+        int prodID = (int) model.getValueAt(x, 2);
+        
+        switch (prodID) {
+            case 1:
+                prod1++;
+                break;
+            case 2:
+                prod2++;
+                break;
+            case 3:
+                prod3++;
+                break;
+            case 4:
+                prod4++;
+                break;
+            case 5:
+                prod5++;
+                break;
+                
+            default:
+                throw new AssertionError();
+        }
+        
+    }
+    
     
     try {
-        dashboard.updatePurchaseDetails(count_orders, count_customers, totalEarnings);
+        dashboard.updateSaleDetails(count_orders, count_customers, totalEarnings, prod1, prod2, prod3, prod4, prod5);
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error updating purchase details");
     }
